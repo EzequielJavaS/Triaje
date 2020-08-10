@@ -23,7 +23,9 @@ const rango            = document.getElementById('cont'),
       respiraAud       = document.querySelector('#respira'),
       respiraRapidAud  = document.querySelector('#respiraRapid'),
       latidiAud        = document.querySelector('#latido'),
-      pasuseSonidos    = document.querySelectorAll('audio');
+      pasuseSonidos    = document.querySelectorAll('audio'),
+      check            = document.querySelector('#check');
+      check.style.visibility = "hidden";
 
 // Variables de Reloj Cuenta atrás
 let cont = 3;
@@ -71,6 +73,7 @@ let actualizarContenedoresAciertos;
         errorHTML.innerHTML = '0 = 0 %';
         contCorrectos = 0;
         contErrores = 0;
+        check.style.visibility = "hidden";
 
         //Desordenar matriz
         function shuffle(array) {
@@ -129,6 +132,12 @@ let actualizarContenedoresAciertos;
 
                 case 'CORRECTO':
                     correctoAud.play();
+                    check.style.visibility = "visible";
+
+                    
+
+
+
                     ejecutaCorrecto();
                     break;
 
@@ -203,6 +212,7 @@ let actualizarContenedoresAciertos;
     };
 
     const ejecutaCorrecto = ()=>{
+        //check.style.visibility = "hidden";
         
         if (imgRestantes!== 1){
 
