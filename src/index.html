@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Triaje Start Disaster Role</title>
+</head>
+<body>
+<!-- Contenedor general -->
+    <div class="wrapper">
+
+    <!-- Cabecera -->
+        <div id="header">
+        <!-- Imagen logotipo -->
+            <img id="logo" src="./assets/logo.png" alt="Disaster Role Logo">
+
+        <!-- Botones Iniciar Triaje / Salir -->
+            <nav>
+                <button type="button" class="letraBlanca iniciar mt-2 mb-2 btn btn-success">Iniciar Triaje</button>
+                <button type="button" class="letraBlanca salir m-2 btn btn-danger">Salir</button>
+            </nav>
+            
+        </div>
+
+    <!-- Fila 1: Imagen Víctima, Complementos y Botones triaje    -->
+        <div id="fila1">
+
+            <!-- Foto Víctima -->
+            <div id="victima">
+                <img src="./assets/imgInicio.png" id="imgVictima">
+            </div>
+
+            <!-- Complementos -->
+            <div id="compl">
+                <h3 id='result'></h3>
+            </div>
+
+            <!-- Botones Triaje -->
+            <div id="botonera">
+                <button type="button" id='btnAbro' class="fl2 letraBlanca btn btn-primary btn-lg" disabled = "disabled">Abro Vía Aérea</button>
+                <button type="button" id='btnRespira'class="fl2 letraBlanca btn btn-primary btn-lg mt-2" disabled = "disabled">¿Respira?</button>
+                <button type="button" id='btnOrdenes'class="fl2 letraBlanca btn btn-warning btn-lg mt-2" disabled = "disabled">¿Obedece Órdenes?</button>
+                <button type="button" id='btnPulso'class="fl2 letraBlanca btn btn-danger btn-lg mt-2" disabled = "disabled">¿Pulso Radial / Relleno Capilar + 2"? </button>
+                <button type="button" id='btnPosLate'class="fl2 letraBlanca btn btn-dark btn-lg mt-4" disabled = "disabled">Posición Lateral de Seguridad</button>
+                
+                <!-- Los botones de contención de hemorragia van el horizontal row -->
+                <div class="horizontal">
+                    <button type="button" id='torniquete'class="fl2 letraBlanca btnTorniquete ajustarDosBotones btn btn-dark btn-lg mt-2 mr-1" disabled = "disabled">Torniquete</button>
+                    <button type="button" id='compresion'class="fl2 letraBlanca btnCompresion ajustarDosBotones btn btn-dark btn-lg mt-2 ml-1" disabled = "disabled">Compresión Directa</button>
+                </div>
+
+                <!-- Sección para colores del triaje -->
+                <div class="colorTriaje border border-dark rounded mt-2">
+                    <h2 class="centrado">Triaje</h2>
+                    <div class="horizontal controlAltura">
+                        <button type="button" id='btnAmarillo'class="fl2 btnAmarillo ajustarDosBotones btn btn-dark btn-lg ml-2 mt-2 mr-1" disabled = "disabled"></button>
+                        <button type="button" id='btnVerde'class="fl2 btnVerde ajustarDosBotones btn btn-dark btn-lg mt-2 ml-1 mr-2" disabled = "disabled"></button>
+                    </div>
+                    <div class="horizontal controlAltura">
+                        <button type="button" id='btnNegro'class="fl2 btnNegro ajustarDosBotones btn btn-dark btn-lg ml-2 mt-2 mr-1 mb-2" disabled = "disabled"></button>
+                        <button type="button" id='btnRojo'class="fl2 btnRojo ajustarDosBotones btn btn-dark btn-lg mt-2 ml-1 mr-2 mb-2" disabled = "disabled"></button>
+                    </div>
+             </div>
+            </div>
+        </div>
+        
+        <!-- Fila 2: Resultados y Reloj -->
+        <div id="fila2">
+
+            <!-- Resultados -->
+            <div id="resul">
+                <div class="victimas rounded mr-2" > 
+                    <h4>Víctimas Restantes</h4>
+                    <h2 id="restantes">0</h2>
+                </div>
+                <div class="aciertos rounded mr-2" >
+                    <h4>Aciertos</h4>
+                    <h2 id="correcto" >0 = 0%</h2>
+                </div>
+                <div class="errores rounded" >
+                    <h4>Errores</h4>
+                    <h2 id="error" >0 = 0%</h2>
+                </div>
+            </div>
+
+            <!-- Reloj -->
+            <div id="reloj">
+                <span id='cont' class="border border-dark rounded mr-2">00:00</span>   
+            </div>
+
+        </div>
+
+     </div>
+
+     <!-- Audios -->
+     <audio id="correctoAud" src='./assets/correctding.mp3'></audio>
+     <audio id="errorAud" src='./assets/fallosonido.mp3'></audio>
+     <audio id="clickAud" src='./assets/clicksonido.mp3'></audio>
+     <audio id="respira" src='./assets/respiracion.mp3'></audio>
+     <audio id="respiraRapid" src='./assets/respiracionrapi.mp3'></audio>
+     <audio id="latido" src='./assets/latido-v3.mp3'></audio>
+ 
+    
+</body>
+</html>

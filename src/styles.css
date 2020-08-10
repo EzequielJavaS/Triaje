@@ -1,0 +1,165 @@
+html,body{
+    margin:0px;
+    height:100%;
+    }
+
+/* Contenedor general crea 3 espacios horizontales con diferente proporción*/
+.wrapper {
+    display: grid;
+    grid-template-rows: 9fr 78fr 13fr;
+    height: 100%;
+}
+    /* Cabacera */
+    #header{
+        background: black ;
+        display: flex;
+        justify-content: space-between; 
+    }
+        /* Logotipo */
+        #logo{
+            height: 9px;
+            width: 20px;
+        }
+  
+        @supports(object-fit: cover){
+            #logo{
+                height: 100%;
+                width: 13%;
+                object-fit: cover;
+                object-position: center center;
+            }
+        }
+        /* Botones cabecera */
+        nav{
+            display: flex;
+            flex-direction: row;
+        }
+    /* Fila 1: Imagen Víctima, Complementos y Botones triaje */
+    #fila1{
+        display: grid;
+        grid-template-columns: 55fr 20fr 25fr;
+    }
+        /*Imagen Víctima*/
+        #victima > img{
+            width: 82px;
+            height: 52px;
+        }
+
+        @supports(object-fit: cover){
+            #victima > img{
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+              object-position: center center;
+            }
+        }
+
+        /*Complementos*/
+
+        /*Botonera Triaje*/
+        #botonera { 
+            display: flex;
+            flex-direction:column;
+            background:rgba(0,0,0,0.0);
+            flex-shrink: 1;
+        }
+
+        .horizontal {
+            display: flex;
+            flex-direction:row;
+            flex-shrink: 1;
+        }
+
+        /*Hacer que el ancho de los botones sea el mismo*/
+        .ajustarDosBotones {flex: 1 1 ;}
+
+        /* Forzar Cambio de color de letra de una clase Bootstrap*/
+        .letraBlanca {
+            color: white;
+            font-size: 1vw;
+        }
+
+        /* Configurar div de Triaje*/
+        .colorTriaje{
+            display: flex;
+            flex-direction:column;
+            background-color: rgb(222, 228, 225);
+            flex: 1 1 ;
+        }
+  
+        .border {border-width:5px !important;}
+  
+        .centrado{
+            text-align: center;
+            font-size: 2vw;
+        }
+  
+        .btnVerde{background-color: green;}
+        .btnAmarillo{background-color: yellow;}
+        .btnNegro{background-color: black;}
+        .btnRojo{background-color: red;}
+        .controlAltura{flex: 1 1 auto;}
+
+    /* Fila 2: Resultados y Reloj     */
+    #fila2{
+        display: grid;
+        grid-template-columns: 7fr 3fr;
+    }
+
+    /*Resultados*/
+    #resul{
+        display: flex;
+        background: white;
+        align-items: flex-start;
+        flex-shrink: 1;
+    }
+
+    .victimas{
+        text-align: center;
+        color: white;
+        background: blue;
+        flex: 1 1 auto;
+      }
+      
+      .aciertos{
+        text-align: center;
+        color: white;
+        background: green;
+        flex: 1 1 auto;
+      }
+      
+      .errores{
+        text-align: center;
+        color: white;
+        background: red;
+        flex: 1 1 auto;
+      }
+
+      h4{
+        font-size: 1.5vw;
+      }
+      
+      h2{
+        font-size: 1.5vw;
+      }
+
+      /*Reloj*/
+      #reloj { 
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 1;
+      }
+
+      #cont{
+        font-size: 3vw;
+        font-weight: bolder;
+        font-family: monospace;
+        background-color: rgb(222, 228, 225);
+        text-align: center;
+      }
+
+/* Coloca bordes en div. Lo puedo quitar al final */
+.wrapper > div >div {
+    border: 2px solid grey;
+    padding: 8px;
+  }
