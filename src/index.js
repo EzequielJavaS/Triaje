@@ -9,7 +9,7 @@ let imagenes = ['asusaz.png', 'nnnnzz.png', 'rnslrz.png', 'reerzz.png',
 //Referencias del HTML
 const rango            = document.getElementById('cont'),
       imprimeResultado = document.querySelector('#result'),
-      botonera            = document.querySelector('#botonera'),
+      botonera         = document.querySelector('#botonera'),
       imgVictima       = document.querySelector('#imgVictima'),
       iniciar          = document.querySelector('.iniciar'),
       btnFl2           = document.querySelectorAll('.fl2'),
@@ -126,19 +126,11 @@ let actualizarContenedoresAciertos;
             let resultado = evaluarAcción(orden, event.target.id, imagen);
             switch (resultado){
                 case 'ERROR':
-                    errorAud.play();
-                    ejecutaError();
+                    esperarE();
                     break;
 
                 case 'CORRECTO':
-                    correctoAud.play();
-                    check.style.visibility = "visible";
-
-                    
-
-
-
-                    ejecutaCorrecto();
+                    esperarC();
                     break;
 
                 case 'NO RESPIRA':
@@ -166,14 +158,31 @@ let actualizarContenedoresAciertos;
                     break;
             }
             
-            //Utilizar selector ternario aplauso.play();
+            //Imprime resultados en complementos.
             imprimeResultado.innerHTML = resultado;
             //imprimeResultado.innerHTML = `${resultado} Orden:${orden}, event: ${event.target.id}, imagen:${imagen}`;
             orden++;
         }
     });
 
+    const esperarC = ()=>{
+        correctoAud.play();
+        check.style.visibility = "visible";
+        setTimeout(function(){
+            ejecutaCorrecto();
+        },2000);
+    }
+
+    const esperarE = ()=>{
+        errorAud.play();
+        check.style.visibility = "visible";
+        setTimeout(function(){
+            ejecutaError();
+        },2000);
+    }
+
     const ejecutaError = ()=>{
+        check.style.visibility = "hidden";
 
         if (imgRestantes!== 1){
 
@@ -184,7 +193,7 @@ let actualizarContenedoresAciertos;
                 correctoHTML.innerHTML = `${contCorrectos} = ${porcCorrectos} %`;
                 porcErrores = Math.round ((contErrores*100)/(contCorrectos + contErrores));
                 errorHTML.innerHTML = `${contErrores} = ${porcErrores} %`;
-                orden = 0;
+                orden = 1;
             };
 
             //Resto una víctima a las restantes
@@ -212,7 +221,7 @@ let actualizarContenedoresAciertos;
     };
 
     const ejecutaCorrecto = ()=>{
-        //check.style.visibility = "hidden";
+        check.style.visibility = "hidden";
         
         if (imgRestantes!== 1){
 
@@ -223,7 +232,7 @@ let actualizarContenedoresAciertos;
                 correctoHTML.innerHTML = `${contCorrectos} = ${porcCorrectos} %`;
                 porcErrores = Math.round ((contErrores*100)/(contCorrectos + contErrores));
                 errorHTML.innerHTML = `${contErrores} = ${porcErrores} %`;
-                orden = 0;
+                orden = 1;
             };
 
             //Resto una víctima a las restantes
