@@ -70,9 +70,9 @@ html,body{
 
         @supports(object-fit: unset){
             #check{
-              margin-left: 70%;  
-              height: 50%;
-              width: 50%;
+              margin-left: 80%;  
+              height: 30%;
+              width: 20%;
               object-fit: unset;
               object-position: center center;
               grid-area: 1 / 1;

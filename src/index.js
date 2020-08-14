@@ -28,7 +28,10 @@ const rango            = document.getElementById('cont'),
       check.style.visibility = "hidden";
 
 // Variables de Reloj Cuenta atrás
-let cont = 3;
+let idReloj;
+const Tiempo = 15; //Variable que marca el tiempo de usuario para triar una víctima
+let cont = Tiempo; //
+
 // Visualización inicial del reloj
 rango.innerHTML ='00:00';
 
@@ -49,14 +52,20 @@ let actualizarContadoresError;
 let actualizarContenedoresAciertos;
 
     // //Reloj cuenta atrás
-    // let id = setInterval(function(){
-    //     let contPlus = `00:${('0'+ cont).slice(-2)}`;
-    //     rango.innerHTML = contPlus;
-    //     cont--;
-    //     if(cont == -1){
-    //         clearInterval(id);
-    //     }
-    // }, 1000);
+    function activaReloj(){
+        idReloj =setInterval(function(){
+            let contPlus = `00:${('0'+ cont).slice(-2)}`;
+            rango.innerHTML = contPlus;
+            cont--;
+            if(cont == -1){ //Si el tiempo llega al final:
+                for(let element of btnFl2){
+                    element.disabled =true;
+                }
+                clearInterval(idReloj);
+                esperarE(); // Lanza el Error de triaje.
+            }
+        }, 1000);
+    };
 
 // EVENTOS
 
@@ -65,6 +74,8 @@ let actualizarContenedoresAciertos;
 
         imagenes = shuffle(imagenes);
         orden = 1;
+        clearInterval(idReloj);
+        cont = Tiempo;
         contImagen =0;
         imprimeResultado.innerHTML = " ";
         imgRestantes = imagenes.length;
@@ -102,6 +113,9 @@ let actualizarContenedoresAciertos;
         imgVictima.src = `./assets/${imagenes[contImagen]}`;
         imagen = imagenes[contImagen];
         contImagen++;
+
+        //Pongo en marcha reloj
+        activaReloj();
     });
 
 
@@ -124,12 +138,21 @@ let actualizarContenedoresAciertos;
 
             //Evaluo botón pulsado
             let resultado = evaluarAcción(orden, event.target.id, imagen);
+            
             switch (resultado){
                 case 'ERROR':
+                    clearInterval(idReloj);
+                    for(let element of btnFl2){
+                        element.disabled =true;
+                    }
                     esperarE();
                     break;
 
                 case 'CORRECTO':
+                    clearInterval(idReloj);
+                    for(let element of btnFl2){
+                        element.disabled =true;
+                    }
                     esperarC();
                     break;
 
@@ -167,6 +190,7 @@ let actualizarContenedoresAciertos;
 
     const esperarC = ()=>{
         correctoAud.play();
+        check.src='./assets/check.png';
         check.style.visibility = "visible";
         setTimeout(function(){
             ejecutaCorrecto();
@@ -175,6 +199,7 @@ let actualizarContenedoresAciertos;
 
     const esperarE = ()=>{
         errorAud.play();
+        check.src='./assets/error.png';
         check.style.visibility = "visible";
         setTimeout(function(){
             ejecutaError();
@@ -183,6 +208,7 @@ let actualizarContenedoresAciertos;
 
     const ejecutaError = ()=>{
         check.style.visibility = "hidden";
+        cont = Tiempo;
 
         if (imgRestantes!== 1){
 
@@ -202,11 +228,21 @@ let actualizarContenedoresAciertos;
     
             //Aumneto contador de errord y porcentaje y reinicio contador de orden
             actualizarContadoresError();
+
+            //Activo Reloj
+            activaReloj();
     
             //Muestro víctima siguiente
             imgVictima.src = `./assets/${imagenes[contImagen]}`;
             imagen = imagenes[contImagen];
             contImagen++;
+
+            for(let element of btnFl2){
+                element.disabled =false;
+            }
+
+
+
         }else{
             //Ejecutar Fin Triaje
             actualizarContadoresError();
@@ -222,6 +258,7 @@ let actualizarContenedoresAciertos;
 
     const ejecutaCorrecto = ()=>{
         check.style.visibility = "hidden";
+        cont = Tiempo;
         
         if (imgRestantes!== 1){
 
@@ -235,17 +272,28 @@ let actualizarContenedoresAciertos;
                 orden = 1;
             };
 
+
             //Resto una víctima a las restantes
             imgRestantes--;
             restantesHTML.innerHTML = imgRestantes;
     
             //Aumneto contador de aciertos y porcentaje y reinicio contador de orden
             actualizarContenedoresAciertos();
+
+            //Activo Reloj
+            activaReloj();
     
             //Muestro víctima siguiente
             imgVictima.src = `./assets/${imagenes[contImagen]}`;
             imagen = imagenes[contImagen];
             contImagen++;
+
+            for(let element of btnFl2){
+                element.disabled =false;
+            }
+
+
+
         }else{
             //Ejecutar Fin Triaje
             actualizarContenedoresAciertos();
