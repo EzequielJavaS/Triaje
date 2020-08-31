@@ -22,10 +22,12 @@ const rango            = document.getElementById('cont'),
       clickAud         = document.querySelector('#clickAud'),
       respiraVid       = document.querySelector('#respiraVid'),
       pulsoVid         = document.querySelector('#pulsoVid'),
+      noPulso          = document.querySelector('#noPulso'),
       ordenVid         = document.querySelector('#ordenVid'),
       pasuseSonidos    = document.querySelectorAll('video'),
       check            = document.querySelector('#check');
       check.style.visibility = "hidden";
+      noPulso.style.display = "none";
 
 // Variables de Reloj Cuenta atrás
 let idReloj;
@@ -144,6 +146,9 @@ botonera.addEventListener('click', event => {
                 break;
 
             case 'NO TIENE PULSO':
+                pulsoVid.style.display = "none";
+                noPulso.style.display = "";
+                break;
             case 'NO RESPIRA':
             case 'SIGUE SIN<br>RESPIRAR':
             case 'BUENA COMPRESIÓN':
@@ -170,7 +175,8 @@ botonera.addEventListener('click', event => {
                 respiraVid.play();
                 break;
             case 'SÍ TIENE PULSO':
-                pulsoVid.src = "./assets/pulsoSi.mp4";
+                noPulso.style.display = "none";
+                pulsoVid.style.display = "";
                 pulsoVid.play();
                 break;
         }
@@ -234,6 +240,8 @@ const ejecutaCorrecto = ()=>{
 };
 
 function desactivacionBotones(opcion){
+    pulsoVid.style.display = "";
+    noPulso.style.display = "none";
     for(let element of btnFl2){
         element.disabled = opcion;
     };

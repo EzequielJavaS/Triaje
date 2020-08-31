@@ -87,7 +87,7 @@ html,body{
             height: 168px; 
         }
 
-         @supports(object-fit: cover){
+        @supports(object-fit: cover){
             .vid{
               height: auto;
               width: 100%;
@@ -97,6 +97,10 @@ html,body{
               z-index: -1;
 
             }
+        }
+
+        #noPulso{
+            margin-bottom: 4pt;
         }
 
         /*Botonera Triaje*/
