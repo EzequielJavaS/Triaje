@@ -34,7 +34,7 @@ module.exports = {
                 options: {minimize: false },         
             },
             {
-                test: /\.(png|svg|jpg|gif|mp3)$/,
+                test: /\.(png|svg|jpg|gif|mp3|mp4)$/,
                 use:[
                     {
                         loader: 'file-loader',

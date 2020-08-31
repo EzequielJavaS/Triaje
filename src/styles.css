@@ -37,12 +37,13 @@ html,body{
     /* Fila 1: Imagen Víctima, Complementos y Botones triaje */
     #fila1{
         display: grid;
-        grid-template-columns: 55fr 20fr 25fr;
+        /* grid-template-columns: 55fr 20fr 25fr; */
+        grid-template-columns: 53fr 23fr 24fr;
+
     }
 
     #victima{
         display: grid;
-    
     }
         /*Imagen Víctima*/
         #imgVictima{
@@ -54,7 +55,7 @@ html,body{
             #imgVictima{
               height: 100%;
               width: 100%;
-              object-fit: cover;
+              object-fit:contain;
               object-position: center center;
               grid-area: 1 / 1;
               z-index: -1;
@@ -80,10 +81,35 @@ html,body{
 
             }
         }
-
-
-
         /*Complementos*/
+        /* #compl{
+            display: grid;
+            grid-template-rows: 33fr 33fr 33fr;
+            width: 100%;
+    
+        }  */
+        .vidResp{
+            width: 192px;
+            height: 168px; 
+
+
+            /* width: 192px;
+            height: 108px; */
+        }
+
+         @supports(object-fit: cover){
+            .vidResp{
+              height: auto;
+              width: 100%;
+              object-fit:contain;
+              object-position: center center;
+              grid-area: 1 / 1;
+              z-index: -1;
+
+            }
+        }
+
+
 
         /*Botonera Triaje*/
         #botonera { 
