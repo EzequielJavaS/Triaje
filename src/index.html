@@ -36,13 +36,16 @@
             <!-- Complementos -->
             
             <div id="compl">
-                <video class="vidResp" src="./assets/respiraNormal.mp4" controls>
+                <video class="vid" id="respiraVid" src="./assets/respiraNormal.mp4">
                     Tu navegador no implementa el elemento <code>video</code>.
                 </video>
-                <video class="vidResp" src="./assets/pulsoSi.mp4" controls>
-                    Tu navegador no implementa el elemento <code>video</code>.
-                </video>
-                <video class="vidResp" src="./assets/siObedece.mp4" controls>
+                <div>
+                    <video class="vid" id="pulsoVid" src="./assets/pulsoSi.mp4">
+                        Tu navegador no implementa el elemento <code>video</code>.
+                    </video>
+                </div>
+               
+                <video class="vid" id="ordenVid" src="./assets/siObedece.mp4">
                     Tu navegador no implementa el elemento <code>video</code>.
                 </video>
                 <h3 id='result'></h3>
@@ -109,10 +112,6 @@
      <audio id="correctoAud" src='./assets/correctding.mp3'></audio>
      <audio id="errorAud" src='./assets/fallosonido.mp3'></audio>
      <audio id="clickAud" src='./assets/clicksonido.mp3'></audio>
-     <audio id="respira" src='./assets/respiracion.mp3'></audio>
-     <audio id="respiraRapid" src='./assets/respiracionrapi.mp3'></audio>
-     <audio id="latido" src='./assets/latido-v3.mp3'></audio>
- 
-    
+
 </body>
 </html>

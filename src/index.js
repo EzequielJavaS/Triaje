@@ -20,16 +20,16 @@ const rango            = document.getElementById('cont'),
       correctoAud      = document.querySelector('#correctoAud'),
       errorAud         = document.querySelector('#errorAud'),
       clickAud         = document.querySelector('#clickAud'),
-      respiraAud       = document.querySelector('#respira'),
-      respiraRapidAud  = document.querySelector('#respiraRapid'),
-      latidiAud        = document.querySelector('#latido'),
-      pasuseSonidos    = document.querySelectorAll('audio'),
+      respiraVid       = document.querySelector('#respiraVid'),
+      pulsoVid         = document.querySelector('#pulsoVid'),
+      ordenVid         = document.querySelector('#ordenVid'),
+      pasuseSonidos    = document.querySelectorAll('video'),
       check            = document.querySelector('#check');
       check.style.visibility = "hidden";
 
 // Variables de Reloj Cuenta atrás
 let idReloj;
-const Tiempo = 15; //Variable que marca el tiempo de usuario para triar una víctima
+const Tiempo = 30; //Variable que marca el tiempo de usuario para triar una víctima
 let cont = Tiempo; //Varable cont es para poder actualizar al valor propuesto a la constante Tiempo-
 
 // Visualización inicial del reloj
@@ -83,6 +83,7 @@ iniciar.addEventListener('click',() =>{
     contCorrectos = 0;
     contErrores = 0;
     check.style.visibility = "hidden";
+
     //Desordenar matriz
     function shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
@@ -141,25 +142,36 @@ botonera.addEventListener('click', event => {
                 desactivacionBotones(true);
                 esperarC();
                 break;
+
+            case 'NO TIENE PULSO':
             case 'NO RESPIRA':
             case 'SIGUE SIN<br>RESPIRAR':
-            case 'NO TIENE PULSO':
             case 'BUENA COMPRESIÓN':
             case 'BUEN TORNIQUETE':
             case 'BUENA<br>POSICIÓN LATERAL':
-            case 'SÍ OBEDECE ÓRDENES':
-            case 'NO OBEDECE ÓRDENES':
                 clickAud.play();
                 break;
+
+            case 'SÍ OBEDECE ÓRDENES':
+                ordenVid.src = "./assets/siObedece.mp4";
+                ordenVid.play();
+                break;
+            case 'NO OBEDECE ÓRDENES':
+                ordenVid.src = "./assets/noObedece.mp4";
+                ordenVid.play();
+                break;
             case 'RESPIRA NORMAL':
-            case 'AHORA SÍ RESPIRO':    
-                respiraAud.play();
+            case 'AHORA SÍ RESPIRO':
+                respiraVid.src = "./assets/respiraNormal.mp4";
+                respiraVid.play();
                 break;
             case 'RESPIRA<br>MUY RÁPIDO':
-                respiraRapidAud.play();
+                respiraVid.src = "./assets/respiraRapido.mp4";
+                respiraVid.play();
                 break;
             case 'SÍ TIENE PULSO':
-                latidiAud.play();
+                pulsoVid.src = "./assets/pulsoSi.mp4";
+                pulsoVid.play();
                 break;
         }
         
@@ -252,8 +264,7 @@ function continuaTriaje(){
     contImagen++;
     desactivacionBotones(false);
 };
-        // Cambiar imagen
-        // imgVictima.src = "./assets/pseguri.png";
+
     
     
        
