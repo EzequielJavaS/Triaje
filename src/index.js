@@ -154,7 +154,7 @@ botonera.addEventListener('click', event => {
                 break;
             case 'NO TIENE PULSO':
                 pulsoVid.style.display = "none";
-                noPulso.style.display = "";
+                noPulso.style.display = "block";
                 clickAud.play();
                 break;
             case 'NO RESPIRA':
@@ -202,7 +202,7 @@ botonera.addEventListener('click', event => {
                 break;
             case 'SÍ TIENE PULSO':
                 noPulso.style.display = "none";
-                pulsoVid.style.display = "";
+                pulsoVid.style.display = "block";
                 pulsoVid.play();
                 break;
         }
@@ -230,6 +230,7 @@ const esperarE = ()=>{
 }
 const ejecutaError = ()=>{
     check.style.visibility = "hidden";
+    hemorragia.style.visibility = "hidden";
     //Aumneto contador de errord y porcentaje y reinicio contador de orden
     contErrores++;
     porcCorrectos = Math.round ((contCorrectos*100)/(contCorrectos + contErrores));
@@ -246,6 +247,7 @@ const ejecutaError = ()=>{
 };
 const ejecutaCorrecto = ()=>{
     check.style.visibility = "hidden";
+    hemorragia.style.visibility = "hidden";
     //Aumneto contador de aciertos y porcentaje y reinicio contador de orden
     contCorrectos++;
     porcCorrectos = Math.round ((contCorrectos*100)/(contCorrectos + contErrores));
@@ -264,7 +266,7 @@ const ejecutaCorrecto = ()=>{
 function desactivacionBotones(opcion){
 
     //Pongo a punto imágenes
-    pulsoVid.style.display = "";
+    pulsoVid.style.display = "block";
     noPulso.style.display = "none";
     noRespira.style.display = "none";
     sigueSinRes.style.display = "none";

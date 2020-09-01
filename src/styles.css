@@ -142,8 +142,12 @@ html,body{
             display: none;
         }
 
-        #noPulso{
+        #b4{
             margin-bottom: 4pt;
+        }
+
+        #ordenVid{
+            margin-top: 4pt;
         }
 
         /*Botonera Triaje*/
