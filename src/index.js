@@ -8,7 +8,6 @@ let imagenes = ['asusaz.png', 'nnnnzz.png', 'rnslrz.png', 'reerzz.png',
 
 //Referencias del HTML
 const rango            = document.getElementById('cont'),
-      imprimeResultado = document.querySelector('#result'),
       botonera         = document.querySelector('#botonera'),
       imgVictima       = document.querySelector('#imgVictima'),
       iniciar          = document.querySelector('.iniciar'),
@@ -25,8 +24,14 @@ const rango            = document.getElementById('cont'),
       noPulso          = document.querySelector('#noPulso'),
       ordenVid         = document.querySelector('#ordenVid'),
       pasuseSonidos    = document.querySelectorAll('video'),
+      noRespira        = document.querySelector('#noRespira'),
+      sigueSinRes      = document.querySelector('#sigueSin'),
+      hemorragia       = document.querySelector('#hemorragia'),
       check            = document.querySelector('#check');
+
+//Invisibilizo algunas imágenes
       check.style.visibility = "hidden";
+      hemorragia.style.visibility = "hidden";
       noPulso.style.display = "none";
 
 // Variables de Reloj Cuenta atrás
@@ -77,7 +82,7 @@ iniciar.addEventListener('click',() =>{
     clearInterval(idReloj);
     cont = Tiempo;
     contImagen =0;
-    imprimeResultado.innerHTML = " ";
+    //imprimeResultado.innerHTML = " ";
     imgRestantes = imagenes.length;
     restantesHTML.innerHTML = imgRestantes;
     correctoHTML.innerHTML = '0 = 0 %';
@@ -85,6 +90,8 @@ iniciar.addEventListener('click',() =>{
     contCorrectos = 0;
     contErrores = 0;
     check.style.visibility = "hidden";
+    hemorragia.style.visibility = "hidden";
+
 
     //Desordenar matriz
     function shuffle(array) {
@@ -130,6 +137,7 @@ botonera.addEventListener('click', event => {
             sonido.pause();
             sonido.currentTime = 0;
         };
+        
         //Evaluo botón pulsado
         let resultado = evaluarAcción(orden, event.target.id, imagen);
         
@@ -144,29 +152,47 @@ botonera.addEventListener('click', event => {
                 desactivacionBotones(true);
                 esperarC();
                 break;
-
             case 'NO TIENE PULSO':
                 pulsoVid.style.display = "none";
                 noPulso.style.display = "";
-                break;
-            case 'NO RESPIRA':
-            case 'SIGUE SIN<br>RESPIRAR':
-            case 'BUENA COMPRESIÓN':
-            case 'BUEN TORNIQUETE':
-            case 'BUENA<br>POSICIÓN LATERAL':
                 clickAud.play();
                 break;
-
+            case 'NO RESPIRA':
+                noRespira.style.display = "block";
+                clickAud.play();
+                break;
+            case 'SIGUE SIN<br>RESPIRAR':
+                noRespira.style.display = "none";
+                sigueSinRes.style.display = "block";
+                clickAud.play();
+                break;
+            case 'BUENA<br>POSICIÓN LATERAL':
+                clickAud.play();
+                imgVictima.src = "./assets/pseguri.png";
+                break;
+            case 'BUENA COMPRESIÓN':
+                hemorragia.src='./assets/presRed.png';
+                hemorragia.style.visibility = "visible";
+                clickAud.play();
+                break;
+            case 'BUEN TORNIQUETE':
+                hemorragia.src='./assets/torniRed.png';
+                hemorragia.style.visibility = "visible";
+                clickAud.play();
+                break;
             case 'SÍ OBEDECE ÓRDENES':
                 ordenVid.src = "./assets/siObedece.mp4";
                 ordenVid.play();
+                clickAud.play();
                 break;
             case 'NO OBEDECE ÓRDENES':
                 ordenVid.src = "./assets/noObedece.mp4";
                 ordenVid.play();
+                clickAud.play();
                 break;
             case 'RESPIRA NORMAL':
             case 'AHORA SÍ RESPIRO':
+                noRespira.style.display = "none";
                 respiraVid.src = "./assets/respiraNormal.mp4";
                 respiraVid.play();
                 break;
@@ -180,10 +206,6 @@ botonera.addEventListener('click', event => {
                 pulsoVid.play();
                 break;
         }
-        
-        //Imprime resultados en complementos.
-        imprimeResultado.innerHTML = resultado;
-        //imprimeResultado.innerHTML = `${resultado} Orden:${orden}, event: ${event.target.id}, imagen:${imagen}`;
         orden++;
     }
 });
@@ -240,8 +262,15 @@ const ejecutaCorrecto = ()=>{
 };
 
 function desactivacionBotones(opcion){
+
+    //Pongo a punto imágenes
     pulsoVid.style.display = "";
     noPulso.style.display = "none";
+    noRespira.style.display = "none";
+    sigueSinRes.style.display = "none";
+    hemorragia.style.visibility = "hidden";
+
+    //Activo-desactivo botones
     for(let element of btnFl2){
         element.disabled = opcion;
     };
@@ -249,7 +278,6 @@ function desactivacionBotones(opcion){
 
 function finTriaje(){
     clearInterval(idReloj);
-    imprimeResultado.innerHTML = 'FIN DE TRIAJE';
     imgVictima.src = './assets/imgFinal.png';
     restantesHTML.innerHTML = 0;
     //Desactivar botones

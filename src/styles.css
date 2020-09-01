@@ -81,6 +81,28 @@ html,body{
 
             }
         }
+
+        /*Imagen Hemorragia*/
+
+        #hemorragia{
+            width: 40px;
+            height: 40px;
+        }
+
+        @supports(object-fit: unset){
+            #hemorragia{
+              margin-left: 80%;  
+              height: 30%;
+              width: 30%;
+              object-fit: unset;
+              object-position: center center;
+              grid-area: 1 / 1;
+              z-index: 1;
+
+            }
+        }
+
+
         /*Complementos*/
         .vid{
             width: 192px;
@@ -93,10 +115,31 @@ html,body{
               width: 100%;
               object-fit:contain;
               object-position: center center;
-              grid-area: 1 / 1;
-              z-index: -1;
-
             }
+        }
+
+        .contenedor{
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .textoEncima{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color:red;
+            font-family: 'Lucida Grande';
+            font-weight: 900;
+        }
+
+        #noRespira{
+            display: none;
+        }
+
+        #sigueSin{
+            display: none;
         }
 
         #noPulso{
