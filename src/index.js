@@ -11,6 +11,7 @@ const rango            = document.getElementById('cont'),
       botonera         = document.querySelector('#botonera'),
       imgVictima       = document.querySelector('#imgVictima'),
       iniciar          = document.querySelector('.iniciar'),
+      salir            = document.querySelector('.salir'),
       btnFl2           = document.querySelectorAll('.fl2'),
       restantesHTML    = document.querySelector('#restantes'),
       correctoHTML     = document.querySelector('#correcto'),
@@ -75,6 +76,12 @@ function activaReloj(){
 
 // EVENTOS
 
+//Botón Salir
+
+salir.addEventListener('click',() =>{
+    location.reload(true);
+});
+
 //Botón 'Iniciar Triaje'
 iniciar.addEventListener('click',() =>{
     imagenes = shuffle(imagenes);
@@ -82,7 +89,6 @@ iniciar.addEventListener('click',() =>{
     clearInterval(idReloj);
     cont = Tiempo;
     contImagen =0;
-    //imprimeResultado.innerHTML = " ";
     imgRestantes = imagenes.length;
     restantesHTML.innerHTML = imgRestantes;
     correctoHTML.innerHTML = '0 = 0 %';

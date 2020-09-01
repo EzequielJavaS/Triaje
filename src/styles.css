@@ -85,15 +85,15 @@ html,body{
         /*Imagen Hemorragia*/
 
         #hemorragia{
-            width: 40px;
-            height: 40px;
+            width: 10px;
+            height: 10px;
         }
 
         @supports(object-fit: unset){
             #hemorragia{
               margin-left: 80%;  
-              height: 30%;
-              width: 30%;
+              height: 35%;
+              width: 25%;
               object-fit: unset;
               object-position: center center;
               grid-area: 1 / 1;
