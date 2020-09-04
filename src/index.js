@@ -27,12 +27,12 @@ const rango            = document.getElementById('cont'),
       pasuseSonidos    = document.querySelectorAll('video'),
       noRespira        = document.querySelector('#noRespira'),
       sigueSinRes      = document.querySelector('#sigueSin'),
-      hemorragia       = document.querySelector('#hemorragia'),
+      torni            = document.querySelector('.torni'),
+      presi            = document.querySelector('.presi'),
       check            = document.querySelector('#check');
 
 //Invisibilizo algunas imágenes
       check.style.visibility = "hidden";
-      hemorragia.style.visibility = "hidden";
       noPulso.style.display = "none";
 
 // Variables de Reloj Cuenta atrás
@@ -70,6 +70,7 @@ function activaReloj(){
             }
             clearInterval(idReloj);
             esperarE(); // Lanza el Error de triaje.
+            
         }
     }, 1000);
 };
@@ -96,8 +97,6 @@ iniciar.addEventListener('click',() =>{
     contCorrectos = 0;
     contErrores = 0;
     check.style.visibility = "hidden";
-    hemorragia.style.visibility = "hidden";
-
 
     //Desordenar matriz
     function shuffle(array) {
@@ -177,13 +176,11 @@ botonera.addEventListener('click', event => {
                 imgVictima.src = "./assets/pseguri.png";
                 break;
             case 'BUENA COMPRESIÓN':
-                hemorragia.src='./assets/presRed.png';
-                hemorragia.style.visibility = "visible";
+                presi.style.visibility = "visible";
                 clickAud.play();
                 break;
             case 'BUEN TORNIQUETE':
-                hemorragia.src='./assets/torniRed.png';
-                hemorragia.style.visibility = "visible";
+                torni.style.visibility = "visible";
                 clickAud.play();
                 break;
             case 'SÍ OBEDECE ÓRDENES':
@@ -236,7 +233,6 @@ const esperarE = ()=>{
 }
 const ejecutaError = ()=>{
     check.style.visibility = "hidden";
-    hemorragia.style.visibility = "hidden";
     //Aumneto contador de errord y porcentaje y reinicio contador de orden
     contErrores++;
     porcCorrectos = Math.round ((contCorrectos*100)/(contCorrectos + contErrores));
@@ -253,7 +249,6 @@ const ejecutaError = ()=>{
 };
 const ejecutaCorrecto = ()=>{
     check.style.visibility = "hidden";
-    hemorragia.style.visibility = "hidden";
     //Aumneto contador de aciertos y porcentaje y reinicio contador de orden
     contCorrectos++;
     porcCorrectos = Math.round ((contCorrectos*100)/(contCorrectos + contErrores));
@@ -276,7 +271,10 @@ function desactivacionBotones(opcion){
     noPulso.style.display = "none";
     noRespira.style.display = "none";
     sigueSinRes.style.display = "none";
-    hemorragia.style.visibility = "hidden";
+    torni.style.visibility = "hidden";
+    presi.style.visibility = "hidden";
+
+
 
     //Activo-desactivo botones
     for(let element of btnFl2){
