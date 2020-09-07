@@ -30,7 +30,8 @@
             <!-- Foto Víctima -->
             <div id="victima">
                 <img src="./assets/imginicio.png" id="imgVictima">
-                <img id="check">
+                <img class="check" id="check" src="./assets/check.png" style="visibility: hidden;">
+                <img class="check" id="error" src="./assets/error.png" style="visibility: hidden;">
                 <img id="hemorragia" class="torni" src="./assets/torniRed.png" style="visibility:hidden">
                 <img id="hemorragia" class="presi" src="./assets/presRed.png" style="visibility:hidden">
 
@@ -40,9 +41,8 @@
             
             <div id="compl">
                 <div class="contenedor" id="b4">
-                    <video class="vid" id="respiraVid" src="./assets/respiraNormal.mp4">
-                        Tu navegador no implementa el elemento <code>video</code>.
-                    </video>
+                    <video class="vid" id="respiraVid" src="./assets/respiraNormal.mp4" style="display:block"></video>
+                    <video class="vid" id="respiraRapVid" src="./assets/respiraRapido.mp4" style="display:none"></video>
                     <h4 class="textoEncima" id="noRespira">¡¡No Respira!!</h4>
                     <h4 class="textoEncima" id="sigueSin">¡¡Sigue sin respirar!!</h4>
 
@@ -50,15 +50,13 @@
             
                 <div id="b4">
                     <video class="vid" id="pulsoVid" src="./assets/pulsoSi.mp4">
-                        Tu navegador no implementa el elemento <code>video</code>.
                     </video>
                     <img src="./assets/noPulso.png" id="noPulso" class="vid">
                 </div>
                
-                <video class="vid" id="ordenVid" src="./assets/siObedece.mp4">
-                    Tu navegador no implementa el elemento <code>video</code>.
-                </video>
-                <!-- <h3 id='result'></h3> -->
+                <video class="vid" id="ordenVid" src="./assets/siObedece.mp4" style="display:block"></video>
+                <video class="vid" id="noOrdenVid" src="./assets/noObedece.mp4"style="display:none"></video>
+
             </div>
 
             <!-- Botones Triaje -->

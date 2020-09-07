@@ -64,13 +64,13 @@ html,body{
         }
 
         /*Imagen Check*/
-        #check{
+        .check{
             width: 40px;
             height: 40px;
         }
 
         @supports(object-fit: unset){
-            #check{
+            .check{
               margin-left: 80%;  
               height: 30%;
               width: 20%;

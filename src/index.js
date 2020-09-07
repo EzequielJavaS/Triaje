@@ -21,18 +21,20 @@ const rango            = document.getElementById('cont'),
       errorAud         = document.querySelector('#errorAud'),
       clickAud         = document.querySelector('#clickAud'),
       respiraVid       = document.querySelector('#respiraVid'),
+      respiraRapVid    = document.querySelector('#respiraRapVid'),
       pulsoVid         = document.querySelector('#pulsoVid'),
       noPulso          = document.querySelector('#noPulso'),
       ordenVid         = document.querySelector('#ordenVid'),
+      noOrdenVid       = document.querySelector('#noOrdenVid'),
       pasuseSonidos    = document.querySelectorAll('video'),
       noRespira        = document.querySelector('#noRespira'),
       sigueSinRes      = document.querySelector('#sigueSin'),
       torni            = document.querySelector('.torni'),
       presi            = document.querySelector('.presi'),
+      error            = document.querySelector('#error'),
       check            = document.querySelector('#check');
 
 //Invisibilizo algunas imágenes
-      check.style.visibility = "hidden";
       noPulso.style.display = "none";
 
 // Variables de Reloj Cuenta atrás
@@ -69,8 +71,7 @@ function activaReloj(){
                 element.disabled =true;
             }
             clearInterval(idReloj);
-            esperarE(); // Lanza el Error de triaje.
-            
+            esperarE(); // Lanza el Error de triaje.          
         }
     }, 1000);
 };
@@ -97,6 +98,7 @@ iniciar.addEventListener('click',() =>{
     contCorrectos = 0;
     contErrores = 0;
     check.style.visibility = "hidden";
+    error.style.visibility = "hidden";
 
     //Desordenar matriz
     function shuffle(array) {
@@ -184,24 +186,24 @@ botonera.addEventListener('click', event => {
                 clickAud.play();
                 break;
             case 'SÍ OBEDECE ÓRDENES':
-                ordenVid.src = "./assets/siObedece.mp4";
                 ordenVid.play();
                 clickAud.play();
                 break;
             case 'NO OBEDECE ÓRDENES':
-                ordenVid.src = "./assets/noObedece.mp4";
-                ordenVid.play();
+                ordenVid.style.display="none";
+                noOrdenVid.style.display="block";
+                noOrdenVid.play();
                 clickAud.play();
                 break;
             case 'RESPIRA NORMAL':
             case 'AHORA SÍ RESPIRO':
                 noRespira.style.display = "none";
-                respiraVid.src = "./assets/respiraNormal.mp4";
                 respiraVid.play();
                 break;
             case 'RESPIRA<br>MUY RÁPIDO':
-                respiraVid.src = "./assets/respiraRapido.mp4";
-                respiraVid.play();
+                respiraVid.style.display="none";
+                respiraRapVid.style.display="block";
+                respiraRapVid.play();
                 break;
             case 'SÍ TIENE PULSO':
                 noPulso.style.display = "none";
@@ -217,7 +219,6 @@ botonera.addEventListener('click', event => {
 
 const esperarC = ()=>{
     correctoAud.play();
-    check.src='./assets/check.png';
     check.style.visibility = "visible";
     setTimeout(function(){
         ejecutaCorrecto();
@@ -225,14 +226,13 @@ const esperarC = ()=>{
 }
 const esperarE = ()=>{
     errorAud.play();
-    check.src='./assets/error.png';
-    check.style.visibility = "visible";
+    error.style.visibility = "visible";
     setTimeout(function(){
         ejecutaError();
     },2000);
 }
 const ejecutaError = ()=>{
-    check.style.visibility = "hidden";
+    error.style.visibility = "hidden";
     //Aumneto contador de errord y porcentaje y reinicio contador de orden
     contErrores++;
     porcCorrectos = Math.round ((contCorrectos*100)/(contCorrectos + contErrores));
@@ -273,8 +273,10 @@ function desactivacionBotones(opcion){
     sigueSinRes.style.display = "none";
     torni.style.visibility = "hidden";
     presi.style.visibility = "hidden";
-
-
+    respiraVid.style.display="block";
+    respiraRapVid.style.display="none";
+    ordenVid.style.display="block";
+    noOrdenVid.style.display="none";
 
     //Activo-desactivo botones
     for(let element of btnFl2){
