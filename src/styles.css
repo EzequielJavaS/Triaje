@@ -7,11 +7,11 @@ html,body{
 .wrapper {
     display: grid;
     grid-template-rows: 9fr 78fr 13fr;
-    height: 100%;
+    height: 100vh;
 }
     /* Cabacera */
     #header{
-        background: black ;
+        background-color:  #21232A ;
         display: flex;
         justify-content: space-between; 
     }
