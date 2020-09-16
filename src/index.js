@@ -67,6 +67,7 @@ function activaReloj(){
         rango.innerHTML = contPlus;
         cont--;
         if(cont == -1){ //Si el tiempo llega al final:
+            //Desabilita botones
             for(let element of btnFl2){
                 element.disabled =true;
             }
@@ -97,8 +98,8 @@ iniciar.addEventListener('click',() =>{
     errorHTML.innerHTML = '0 = 0 %';
     contCorrectos = 0;
     contErrores = 0;
-    check.style.visibility = "hidden";
-    error.style.visibility = "hidden";
+    // check.style.visibility = "hidden";
+    // error.style.visibility = "hidden";
 
     //Desordenar matriz
     function shuffle(array) {
@@ -267,15 +268,15 @@ const ejecutaCorrecto = ()=>{
 function desactivacionBotones(opcion){
 
     //Pongo a punto imágenes
-    pulsoVid.style.display = "block";
+    pulsoVid.style.display = "none";
     noPulso.style.display = "none";
     noRespira.style.display = "none";
     sigueSinRes.style.display = "none";
     torni.style.visibility = "hidden";
     presi.style.visibility = "hidden";
-    respiraVid.style.display="block";
+    respiraVid.style.display="none";
     respiraRapVid.style.display="none";
-    ordenVid.style.display="block";
+    ordenVid.style.display="none";
     noOrdenVid.style.display="none";
 
     //Activo-desactivo botones

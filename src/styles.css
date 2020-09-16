@@ -1,22 +1,75 @@
-html,body{
-    margin:0px;
-    height:100%;
+*{
+    box-sizing: border-box;
     }
 
-/* Contenedor general crea 3 espacios horizontales con diferente proporción*/
+body {
+    background-color:  #21232A;
+    /* font-family: KumL; */
+    font-family: 'Quicksand', sans-serif;
+}
+
+@font-face{
+    font-family: digital;
+    src: url(./assets/fons/digital.ttf)
+}
+
+@font-face{
+    font-family: KumL;
+    src: url(./assets/fons/KumbLight.ttf)
+}
+
+
+/* Contenedor general crea 2 columnas y 3 filas*/
 .wrapper {
     display: grid;
-    grid-template-rows: 9fr 78fr 13fr;
+    grid-template-columns: 65% 35%;
+    grid-template-rows: 1fr 83fr 15fr;
     height: 100vh;
+    gap: 0.2rem;
+    grid-template-areas:
+        "nav nav"
+        "img eva"
+        "con eva";
 }
-    /* Cabacera */
-    #header{
-        background-color:  #21232A ;
+/* Cabacera */
+    .nav{
         display: flex;
-        justify-content: space-between; 
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        grid-area: nav;
+        
+    }
+
+    .logoProvisional{
+        color: white;
+        margin: 0 auto 0 1rem;
+        font-family: Impact, Charcoal, sans-serif;
+        align-items: center;
+        align-self: center;
+        font-size: 1.5vw;
+        padding: 0;
+    }
+    .logoTexto{
+        margin-left: 0;
+    }
+
+    .logoTexto{
+        width: auto;
+        height: auto;
+    }
+
+    @supports(object-fit: cover){
+        .logoTexto{
+          height: auto;
+          width: 100%;
+          object-fit:contain;
+          object-position: center center;
+          border-radius: 10px 10px 10px 10px;
+
+        }
     }
         /* Logotipo */
-        #logo{
+        /* #logo{
             height: 9px;
             width: 20px;
         }
@@ -28,43 +81,56 @@ html,body{
                 object-fit: cover;
                 object-position: center center;
             }
-        }
-        /* Botones cabecera */
-        nav{
-            display: flex;
-            flex-direction: row;
-        }
-    /* Fila 1: Imagen Víctima, Complementos y Botones triaje */
-    #fila1{
+        } */  
+    
+/* Imagen Víctima */
+    /* .divImgVic{
         display: grid;
-        /* grid-template-columns: 55fr 20fr 25fr; */
-        grid-template-columns: 53fr 23fr 24fr;
+    }*/
+
+    .iniciar, .pausar, .salir{
+        padding: 0% 0.3vw 0% 0.3vw;
+        font-size: 1.7vh;
+        color: white;
+        width: unset;
+        min-width: 6rem;
+        height: min-content
 
     }
 
-    #victima{
-        display: grid;
+    .iniciar{
+        background-color: green;
     }
-        /*Imagen Víctima*/
-        #imgVictima{
-            width: 82px;
-            height: 52px;
-        }
+    .pausar{
+        background-color: rgb(35, 77, 190);
+    }
+    .salir{
+        background-color: red;
+    }
+        
+    .divImgVic{
+        margin: 0 0.3rem auto 1rem;
+        grid-area: img;
+        border: 0.15vw solid grey;
+        border-radius: 10px 10px 10px 10px;
+        padding: 0.4vw;
+        margin-bottom: 0rem;
+    }
 
         @supports(object-fit: cover){
             #imgVictima{
               height: 100%;
               width: 100%;
               object-fit:contain;
-              object-position: center center;
+              object-position:center center;
               grid-area: 1 / 1;
               z-index: -1;
 
             }
-        }
+        } 
 
         /*Imagen Check*/
-        .check{
+        /* .check{
             width: 40px;
             height: 40px;
         }
@@ -80,11 +146,11 @@ html,body{
               z-index: 1;
 
             }
-        }
+        } */
 
         /*Imagen Hemorragia*/
 
-        #hemorragia{
+        /* #hemorragia{
             width: 10px;
             height: 10px;
         }
@@ -100,39 +166,230 @@ html,body{
               z-index: 1;
 
             }
-        }
+        } */
+/* Evaluación */
+.divEvaluacion{
+    display: flex;
+    flex-direction: column;
+    grid-area: eva;
+}
+
+.divValoracion{
+    display: flex;
+    flex-direction: column;
+    border: 0.15vw solid grey;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0.3vw 0.3vw 0 0.3vw;
+    flex: 4.1;
+    margin-bottom: 0.5rem;
+     
+}
+#btnRespira, #btnAbro, #btnPulso, #btnOrdenes{
+    margin-bottom: 0.5rem;
+    margin-right: 0.2rem;
+    padding: 0%;
+    font-size: 2.5vh;
+    flex: 1;
+}
+#btnRespira, #btnAbro{
+    background-color: rgb(44, 123, 226);
+}
+#btnRespira:hover, #btnAbro:hover{
+    background-color: rgb(167, 168, 245);
+}
+#btnPulso{
+    background-color: red;
+}
+#btnPulso:hover{
+    background-color: rgb(245, 120, 120);
+}
+#btnOrdenes{
+    background-color: rgb(243, 161, 10);
+}
+#btnOrdenes:hover{
+    background-color: rgb(185, 162, 111);
+}
 
 
-        /*Complementos*/
+.divSalvadoras{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.5rem;
+    border: 0.15vw solid grey;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0.3vw;
+    margin-top: auto;
+    flex: 1.9;
+    margin-bottom: 0.5rem;
+
+ 
+
+}
+.btnPosiLat{
+    grid-column: span 2;
+}
+
+.btnTorniquete, .btnCompresion, .btnPosiLat{
+    background-color: rgb(74, 83, 88);
+    font-size: 2.5vh;
+    padding: 0%;
+    height:auto
+}
+
+.btnTorniquete:hover, .btnCompresion:hover, .btnPosiLat:hover{
+    background-color: rgb(141, 146, 148);
+}
+
+
+/*Animación*/
+.divAnimacion{
+    display: flex;
+    margin-top: auto;
+    border: 0.15vw solid grey;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0.3vw;
+    margin-bottom: 0.4rem;
+    flex: 6.5;
+    
+
+}
+
+    .vid{
+        width: 192px;
+        height: 168px;
+    }
+
+    @supports(object-fit: cover){
         .vid{
-            width: 192px;
-            height: 168px; 
+          height: auto;
+          width: 100%;
+          object-fit:contain;
+          object-position: center center;
+        }
+    }
+
+    /* .contenedor{
+        position: relative;
+        display: inline-block;
+        text-align: center;
+    } */
+
+    /* .textoEncima{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color:red;
+        font-family: 'Lucida Grande';
+        font-weight: 900;
+    } */ 
+    
+/* Triaje */
+    .divTriaje{
+        display: flex;
+        flex: 2.4;
+        align-content: space-between;
+        justify-content: center;
+    }
+ 
+        
+
+    .btnVerde, .btnAmarillo, .btnNegro, .btnRojo{
+        flex: 1; 
+        border: 0.15vw solid grey;
+        border-radius: 10px 10px 10px 10px;
+        margin-bottom: 1rem;
+    }
+
+    .btnVerde{background-color: green;}
+    .btnVerde:hover{background-color: rgb(27, 172, 27);
+        border: 0.15vw solid white;}
+    .btnAmarillo{background-color: yellow;}
+    .btnAmarillo:hover{background-color: rgb(245, 245, 167);
+        border: 0.15vw solid white;}
+    .btnNegro{background-color: black;}
+    .btnNegro:hover{background-color: rgb(46, 45, 45);
+        border: 0.15vw solid white;}
+    .btnRojo{background-color: red;}
+    .btnRojo:hover{background-color: rgb(248, 106, 106);
+        border: 0.15vw solid white;}
+
+
+
+/* Contadores */
+        .divContadores{
+            display: flex;
+            flex-direction: rows;
+            grid-area: con;
+            margin-left: 1rem;
         }
 
-        @supports(object-fit: cover){
-            .vid{
-              height: auto;
-              width: 100%;
-              object-fit:contain;
-              object-position: center center;
-            }
-        }
+        .victimas{
+            display: flex;
+            flex-direction: column;
+            color: white;
+            /* background: rgb(107, 174, 236); */
+            flex: 1;
+            margin: 0.3rem auto 1rem auto;
+            justify-content: center;
+            align-items: center;
+            border: 0.15vw solid grey;
+            border-radius: 10px 10px 10px 10px;
+          }
+          
+          .aciertos{
+            display: flex;
+            flex-direction: column;
+            color: white;
+            /* background: rgb(72, 112, 72); */
+            flex: 1;
+            margin: 0.3rem auto 1rem auto;
+            justify-content: center;
+            align-items: center;
+            border: 0.15vw solid grey;
+            border-radius: 10px 10px 10px 10px;
 
-        .contenedor{
-            position: relative;
-            display: inline-block;
-            text-align: center;
-        }
+          }
+          
+          .errores{
+            display: flex;
+            flex-direction: column;
+            color: white;
+            /* background: rgb(251, 108, 108); */
+            flex: 1;
+            margin: 0.3rem auto 1rem auto;
+            justify-content: center;
+            align-items: center;
+            border: 0.15vw solid grey;
+            border-radius: 10px 10px 10px 10px;
 
-        .textoEncima{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color:red;
-            font-family: 'Lucida Grande';
-            font-weight: 900;
-        }
+
+          }
+    
+          h4, h2{
+            /* font-family: AvenirLight; */
+            font-size: 1.5vw;
+          }
+          
+          /* h2{
+            font-size: 1.5vw;
+          } */
+
+          /*Reloj*/
+        #reloj { 
+            flex: 1;
+            margin: 0.3rem auto auto auto;
+        } 
+
+      #cont{
+        font-size: 5vw;
+        font-family: digital;
+        color: red;
+        text-align:start;
+        margin: 0 auto auto 2vw;
+
+      }
 
         #noRespira{
             display: none;
@@ -151,109 +408,54 @@ html,body{
         }
 
         /*Botonera Triaje*/
-        #botonera { 
+        /* #botonera { 
             display: flex;
             flex-direction:column;
             background:rgba(0,0,0,0.0);
             flex-shrink: 1;
-        }
-
+        } */
+/* 
         .horizontal {
             display: flex;
             flex-direction:row;
             flex-shrink: 1;
-        }
+        } */
 
-        /*Hacer que el ancho de los botones sea el mismo*/
-        .ajustarDosBotones {flex: 1 1 ;}
 
         /* Forzar Cambio de color de letra de una clase Bootstrap*/
         .letraBlanca {
             color: white;
-            font-size: 1vw;
         }
 
         /* Configurar div de Triaje*/
-        .colorTriaje{
+        /* .colorTriaje{
             display: flex;
             flex-direction:column;
             background-color: rgb(222, 228, 225);
             flex: 1 1 ;
-        }
+        } */
   
-        .border {border-width:5px !important;}
+        /* .border {border-width:5px !important;} */
   
-        .centrado{
+        /* .centrado{
             text-align: center;
             font-size: 2vw;
-        }
-  
-        .btnVerde{background-color: green;}
-        .btnAmarillo{background-color: yellow;}
-        .btnNegro{background-color: black;}
-        .btnRojo{background-color: red;}
-        .controlAltura{flex: 1 1 auto;}
+        } */
+        
+
+        /* .controlAltura{flex: 1 1 auto;} */
 
     /* Fila 2: Resultados y Reloj     */
-    #fila2{
+    /* #fila2{
         display: grid;
         grid-template-columns: 7fr 3fr;
-    }
+    } */
 
     /*Resultados*/
-    #resul{
+    /* #resul{
         display: flex;
         background: white;
         align-items: flex-start;
         flex-shrink: 1;
-    }
+    } */
 
-    .victimas{
-        text-align: center;
-        color: white;
-        background: blue;
-        flex: 1 1 auto;
-      }
-      
-      .aciertos{
-        text-align: center;
-        color: white;
-        background: green;
-        flex: 1 1 auto;
-      }
-      
-      .errores{
-        text-align: center;
-        color: white;
-        background: red;
-        flex: 1 1 auto;
-      }
-
-      h4{
-        font-size: 1.5vw;
-      }
-      
-      h2{
-        font-size: 1.5vw;
-      }
-
-      /*Reloj*/
-      #reloj { 
-        display: flex;
-        flex-direction: column;
-        flex-shrink: 1;
-      }
-
-      #cont{
-        font-size: 3vw;
-        font-weight: bolder;
-        font-family: monospace;
-        background-color: rgb(222, 228, 225);
-        text-align: center;
-      }
-
-/* Coloca bordes en div. Lo puedo quitar al final */
-.wrapper > div >div {
-    border: 2px solid grey;
-    padding: 8px;
-  }
