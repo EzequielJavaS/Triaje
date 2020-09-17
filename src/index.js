@@ -32,7 +32,8 @@ const rango            = document.getElementById('cont'),
       torni            = document.querySelector('.torni'),
       presi            = document.querySelector('.presi'),
       error            = document.querySelector('#error'),
-      check            = document.querySelector('#check');
+      check            = document.querySelector('#check'),
+      logoTexto        = document.querySelector('.logoTexto');
 
 //Invisibilizo algunas imágenes
       noPulso.style.display = "none";
@@ -98,7 +99,7 @@ iniciar.addEventListener('click',() =>{
     errorHTML.innerHTML = '0 = 0 %';
     contCorrectos = 0;
     contErrores = 0;
-    // check.style.visibility = "hidden";
+    check.style.display = "none";
     // error.style.visibility = "hidden";
 
     //Desordenar matriz
@@ -151,62 +152,73 @@ botonera.addEventListener('click', event => {
         
         switch (resultado){
             case 'ERROR':
+                errorAud.play();
+                esperarE();
                 clearInterval(idReloj);
                 desactivacionBotones(true);
-                esperarE();
                 break;
             case 'CORRECTO':
+                correctoAud.play();
+                esperarC();
                 clearInterval(idReloj);
                 desactivacionBotones(true);
-                esperarC();
                 break;
             case 'NO TIENE PULSO':
+                clickAud.play();
+                respiraVid.style.display= "none";
                 pulsoVid.style.display = "none";
                 noPulso.style.display = "block";
-                clickAud.play();
                 break;
             case 'NO RESPIRA':
-                noRespira.style.display = "block";
                 clickAud.play();
+                logoTexto.style.display = "none";
+                respiraVid.style.display= "block";
+                noRespira.style.display = "block";
                 break;
             case 'SIGUE SIN<br>RESPIRAR':
+                clickAud.play();
                 noRespira.style.display = "none";
                 sigueSinRes.style.display = "block";
-                clickAud.play();
                 break;
             case 'BUENA<br>POSICIÓN LATERAL':
                 clickAud.play();
                 imgVictima.src = "./assets/pseguri.png";
                 break;
             case 'BUENA COMPRESIÓN':
-                presi.style.visibility = "visible";
                 clickAud.play();
+                presi.style.display = "block";
                 break;
             case 'BUEN TORNIQUETE':
-                torni.style.visibility = "visible";
                 clickAud.play();
+                torni.style.display = "block";
                 break;
             case 'SÍ OBEDECE ÓRDENES':
-                ordenVid.play();
                 clickAud.play();
+                pulsoVid.style.display = "none";
+                ordenVid.style.display = "block";
+                ordenVid.play();
                 break;
             case 'NO OBEDECE ÓRDENES':
-                ordenVid.style.display="none";
+                clickAud.play();
+                pulsoVid.style.display = "none";
                 noOrdenVid.style.display="block";
                 noOrdenVid.play();
-                clickAud.play();
                 break;
             case 'RESPIRA NORMAL':
             case 'AHORA SÍ RESPIRO':
+                logoTexto.style.display = "none";
                 noRespira.style.display = "none";
+                respiraVid.style.display= "block";
                 respiraVid.play();
                 break;
             case 'RESPIRA<br>MUY RÁPIDO':
+                logoTexto.style.display = "none";
                 respiraVid.style.display="none";
                 respiraRapVid.style.display="block";
                 respiraRapVid.play();
                 break;
             case 'SÍ TIENE PULSO':
+                respiraVid.style.display= "none";
                 noPulso.style.display = "none";
                 pulsoVid.style.display = "block";
                 pulsoVid.play();
@@ -219,15 +231,13 @@ botonera.addEventListener('click', event => {
 //MÉTODOS
 
 const esperarC = ()=>{
-    correctoAud.play();
-    check.style.visibility = "visible";
+    check.style.display = "block";
     setTimeout(function(){
         ejecutaCorrecto();
     },2000);
 }
 const esperarE = ()=>{
     errorAud.play();
-    error.style.visibility = "visible";
     setTimeout(function(){
         ejecutaError();
     },2000);
@@ -249,7 +259,7 @@ const ejecutaError = ()=>{
     }     
 };
 const ejecutaCorrecto = ()=>{
-    check.style.visibility = "hidden";
+    check.style.display = "none";
     //Aumneto contador de aciertos y porcentaje y reinicio contador de orden
     contCorrectos++;
     porcCorrectos = Math.round ((contCorrectos*100)/(contCorrectos + contErrores));
@@ -272,12 +282,14 @@ function desactivacionBotones(opcion){
     noPulso.style.display = "none";
     noRespira.style.display = "none";
     sigueSinRes.style.display = "none";
-    torni.style.visibility = "hidden";
-    presi.style.visibility = "hidden";
+    torni.style.display = "none";
+    presi.style.display = "none";
     respiraVid.style.display="none";
     respiraRapVid.style.display="none";
     ordenVid.style.display="none";
     noOrdenVid.style.display="none";
+    logoTexto.style.display = "block";
+
 
     //Activo-desactivo botones
     for(let element of btnFl2){

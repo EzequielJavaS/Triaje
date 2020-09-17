@@ -24,7 +24,7 @@
 
 <!-- Imagen Víctima -->
         <div class="divImgVic">
-            <img id="imgVictima" src="./assets/riirzz.png">
+            <img id="imgVictima" src="./assets/imginicio.png">
 
             <!--Quitar style display:none-->
             <img class="check" id="check" src="./assets/check.png" style="display:none"> <!--Posible style="visibility: hidden;" para trabajat con él-->
@@ -39,7 +39,7 @@
             <!-- disabled = "disabled" -->
         <div class="divEvaluacion mr-3" id="botonera">
             <div class="divValoracion">
-                <button type="button" id='btnRespira'class=" fl2 letraBlanca btn " disabled = "disabled">¿Respira? </button>
+                <button type="button" id='btnRespira'class=" fl2 letraBlanca btn " disabled = "disabled">¿Respira?</button>
                 <button type="button" id='btnAbro'   class=" fl2 letraBlanca btn " disabled = "disabled">Abro Vía Aerea</button>
                 <button type="button" id='btnPulso'  class=" fl2 letraBlanca btn " disabled = "disabled">¿Pulso Radial / Relleno Capilar &lt 2"?</button>
                 <button type="button" id='btnOrdenes'class=" fl2 letraBlanca btn " disabled = "disabled">¿Obedece Órdenes?</button>               
@@ -65,12 +65,11 @@
                 <video class="vid" id="noOrdenVid" src="./assets/noObedece.mp4"style="display:none"></video>
             </div>
             <div class="divTriaje">
-                <button type="button" id='btnRojo'    class="fl2 btnRojo     btn mt-1 mr-2" disabled = "disabled"></button>                                                                                                                                                "></button>           
-                <button type="button" id='btnAmarillo'class="fl2 btnAmarillo btn mt-1 mr-2" disabled = "disabled"></button>                                                                                                                                                   "></button>
-                <button type="button" id='btnVerde'   class="fl2 btnVerde    btn mt-1 mr-2" disabled = "disabled"></button>                                                                                                                                                   "></button>
-                <button type="button" id='btnNegro'   class="fl2 btnNegro    btn mt-1" disabled = "disabled"></button>                                                                                                                                                  "></button>
+                <button type="button" id='btnRojo'    class="fl2 btnRojo     btn mt-1 mr-2" disabled = "disabled"></button>
+                <button type="button" id='btnAmarillo'class="fl2 btnAmarillo btn mt-1 mr-2" disabled = "disabled"></button>
+                <button type="button" id='btnVerde'class="fl2 btnVerde btn mt-1 mr-2" disabled = "disabled"></button>
+                <button type="button" id='btnNegro'class="fl2 btnNegro btn mt-1 " disabled = "disabled"></button>
             </div>
-
         </div>
 
 <!-- Contadores -->
@@ -82,17 +81,18 @@
             <div class="aciertos  mr-2" >
                 <h4>Aciertos</h4>
                 <h2 id="correcto" >0 = 0%</h2>
+                <img class="checkCont" id="checkCont" src="./assets/check.png" style="display:block"> <!--Posible style="visibility: hidden;" para trabajat con él-->
             </div>
             <div class="errores  mr-2" >
                 <h4>Errores</h4>
                 <h2 id="errorHTML" >0 = 0%</h2>
+                <img class="errorCont" id="errorCont" src="./assets/error.png" style="display:block"> <!--Posible style="visibility: hidden;" para trabajat con él-->
+
             </div>
             <div id="reloj">
                 <div id='cont'>00:00</div>   
             </div>
         </div>
-
-
     </main>
 
 <!-- Audios -->

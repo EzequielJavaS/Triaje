@@ -6,6 +6,7 @@ body {
     background-color:  #21232A;
     /* font-family: KumL; */
     font-family: 'Quicksand', sans-serif;
+    height: 100vh;
 }
 
 @font-face{
@@ -24,7 +25,7 @@ body {
     display: grid;
     grid-template-columns: 65% 35%;
     grid-template-rows: 1fr 83fr 15fr;
-    height: 100vh;
+    height: 100%;
     gap: 0.2rem;
     grid-template-areas:
         "nav nav"
@@ -117,56 +118,65 @@ body {
         margin-bottom: 0rem;
     }
 
-        @supports(object-fit: cover){
+        @supports(object-fit: contain){
             #imgVictima{
               height: 100%;
               width: 100%;
               object-fit:contain;
               object-position:center center;
-              grid-area: 1 / 1;
+              grid-area: img;
               z-index: -1;
 
             }
         } 
 
         /*Imagen Check*/
-        /* .check{
+        .check{
             width: 40px;
             height: 40px;
         }
-
-        @supports(object-fit: unset){
+        @supports(object-fit: contain){
             .check{
-              margin-left: 80%;  
-              height: 30%;
-              width: 20%;
-              object-fit: unset;
-              object-position: center center;
-              grid-area: 1 / 1;
-              z-index: 1;
-
+                position: absolute;
+                top: 10%;
+                left: 60%;
+                transform: translate(-50%, -50%);
+                height: 20%;
+                width: 20%;
+                object-fit: contain;
             }
+        }
+
+        /* .textoEncima{
+            position: absolute;
+            top: 65%;
+            left: 83%;
+            transform: translate(-50%, -50%);
+            color:red;
+            font-family: 'Lucida Grande';
+            font-weight: 900;
+            font-size: 2.2vmax;
         } */
 
         /*Imagen Hemorragia*/
 
-        /* #hemorragia{
+        #hemorragia{
             width: 10px;
             height: 10px;
         }
 
-        @supports(object-fit: unset){
+       @supports(object-fit: contain){
             #hemorragia{
-              margin-left: 80%;  
-              height: 35%;
-              width: 25%;
-              object-fit: unset;
-              object-position: center center;
-              grid-area: 1 / 1;
-              z-index: 1;
-
+                position: absolute;
+                top: 15%;
+                left: 59%;
+                transform: translate(-50%, -50%);
+                height: 20%;
+                width: 20%;
+                object-fit: contain;
             }
-        } */
+        } 
+
 /* Evaluación */
 .divEvaluacion{
     display: flex;
@@ -275,15 +285,16 @@ body {
         text-align: center;
     } */
 
-    /* .textoEncima{
+    .textoEncima{
         position: absolute;
-        top: 50%;
-        left: 50%;
+        top: 65%;
+        left: 83%;
         transform: translate(-50%, -50%);
         color:red;
         font-family: 'Lucida Grande';
         font-weight: 900;
-    } */ 
+        font-size: 2.2vmax;
+    }
     
 /* Triaje */
     .divTriaje{
@@ -301,6 +312,8 @@ body {
         border-radius: 10px 10px 10px 10px;
         margin-bottom: 1rem;
     }
+
+
 
     .btnVerde{background-color: green;}
     .btnVerde:hover{background-color: rgb(27, 172, 27);
@@ -337,6 +350,14 @@ body {
             border: 0.15vw solid grey;
             border-radius: 10px 10px 10px 10px;
           }
+
+          #a{
+              grid-area: a;
+          }
+
+          #correcto{
+              grid-area: b;
+          }
           
           .aciertos{
             display: flex;
@@ -349,8 +370,24 @@ body {
             align-items: center;
             border: 0.15vw solid grey;
             border-radius: 10px 10px 10px 10px;
-
           }
+
+           /*Imagen CheckCont*/
+        .checkCont{
+            width: 10px;
+            height: 10px;
+        }
+        @supports(object-fit: contain){
+            .checkCont{
+                position: absolute;
+                top: 90%;
+                left: 30%;
+                transform: translate(-50%, -50%);
+                height: 6%;
+                width: 6%;
+                object-fit: contain;
+            }
+        }
           
           .errores{
             display: flex;
@@ -362,10 +399,25 @@ body {
             justify-content: center;
             align-items: center;
             border: 0.15vw solid grey;
-            border-radius: 10px 10px 10px 10px;
-
-
+            border-radius: 10px 10px 10px 10px; 
           }
+
+          /*Imagen ErrorCont*/
+        .errorCont{
+            width: 10px;
+            height: 10px;
+        }
+        @supports(object-fit: contain){
+            .errorCont{
+                position: absolute;
+                top: 90%;
+                left: 46%;
+                transform: translate(-50%, -50%);
+                height: 6%;
+                width: 6%;
+                object-fit: contain;
+            }
+        }
     
           h4, h2{
             /* font-family: AvenirLight; */
@@ -391,7 +443,7 @@ body {
 
       }
 
-        #noRespira{
+        /* #noRespira{
             display: none;
         }
 
@@ -405,7 +457,7 @@ body {
 
         #ordenVid{
             margin-top: 4pt;
-        }
+        } */
 
         /*Botonera Triaje*/
         /* #botonera { 
