@@ -1,6 +1,7 @@
 
 import './styles.css';
 import{evaluarAcción} from './js/evaluar-accion';
+import{alerta} from './js/sweetalert.js'
 
 let imagenes = ['asusaz.png', 'nnnnzz.png', 'rnslrz.png', 'reerzz.png',
                   'riirzz.png', 'rnselr.png', 'rnsilr.png', 'rrrzzz.png',
@@ -31,7 +32,6 @@ const rango            = document.getElementById('cont'),
       sigueSinRes      = document.querySelector('#sigueSin'),
       torni            = document.querySelector('.torni'),
       presi            = document.querySelector('.presi'),
-      error            = document.querySelector('#error'),
       check            = document.querySelector('#check'),
       logoTexto        = document.querySelector('.logoTexto');
 
@@ -100,7 +100,6 @@ iniciar.addEventListener('click',() =>{
     contCorrectos = 0;
     contErrores = 0;
     check.style.display = "none";
-    // error.style.visibility = "hidden";
 
     //Desordenar matriz
     function shuffle(array) {
@@ -151,8 +150,9 @@ botonera.addEventListener('click', event => {
         let resultado = evaluarAcción(orden, event.target.id, imagen);
         
         switch (resultado){
-            case 'ERROR':
+            case 'ERROR': 
                 errorAud.play();
+                alerta();
                 esperarE();
                 clearInterval(idReloj);
                 desactivacionBotones(true);
@@ -243,7 +243,6 @@ const esperarE = ()=>{
     },2000);
 }
 const ejecutaError = ()=>{
-    error.style.visibility = "hidden";
     //Aumneto contador de errord y porcentaje y reinicio contador de orden
     contErrores++;
     porcCorrectos = Math.round ((contCorrectos*100)/(contCorrectos + contErrores));

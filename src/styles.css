@@ -1,12 +1,8 @@
-*{
-    box-sizing: border-box;
-    }
 
 body {
     background-color:  #21232A;
     /* font-family: KumL; */
     font-family: 'Quicksand', sans-serif;
-    height: 100vh;
 }
 
 @font-face{
@@ -19,13 +15,12 @@ body {
     src: url(./assets/fons/KumbLight.ttf)
 }
 
-
 /* Contenedor general crea 2 columnas y 3 filas*/
 .wrapper {
     display: grid;
     grid-template-columns: 65% 35%;
     grid-template-rows: 1fr 83fr 15fr;
-    height: 100%;
+    height: 100vh;
     gap: 0.2rem;
     grid-template-areas:
         "nav nav"
@@ -372,7 +367,7 @@ body {
             border-radius: 10px 10px 10px 10px;
           }
 
-           /*Imagen CheckCont*/
+/*Imagen CheckCont*/
         .checkCont{
             width: 10px;
             height: 10px;
@@ -402,7 +397,7 @@ body {
             border-radius: 10px 10px 10px 10px; 
           }
 
-          /*Imagen ErrorCont*/
+/*Imagen ErrorCont*/
         .errorCont{
             width: 10px;
             height: 10px;
@@ -423,12 +418,22 @@ body {
             /* font-family: AvenirLight; */
             font-size: 1.5vw;
           }
-          
+
+/*Alertas*/
+          .textAlert{
+            font-size: 1.5vw;
+          }
+
+          .grande{
+            font-size:2vw;
+            font-weight: bold;
+          }
+
           /* h2{
             font-size: 1.5vw;
           } */
 
-          /*Reloj*/
+/*Reloj*/
         #reloj { 
             flex: 1;
             margin: 0.3rem auto auto auto;
