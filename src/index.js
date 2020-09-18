@@ -1,7 +1,7 @@
 
 import './styles.css';
 import{evaluarAcción} from './js/evaluar-accion';
-import{alerta} from './js/sweetalert.js'
+import{alerta, alerta1, alerta2, alerta3, alerta4, alerta5} from './js/sweetalert.js'
 
 let imagenes = ['asusaz.png', 'nnnnzz.png', 'rnslrz.png', 'reerzz.png',
                   'riirzz.png', 'rnselr.png', 'rnsilr.png', 'rrrzzz.png',
@@ -151,11 +151,28 @@ botonera.addEventListener('click', event => {
         
         switch (resultado){
             case 'ERROR': 
-                errorAud.play();
                 alerta();
                 esperarE();
-                clearInterval(idReloj);
-                desactivacionBotones(true);
+                break;
+            case 'ERROR1': 
+                alerta1();
+                esperarE();
+                break;
+            case 'ERROR2': 
+                alerta2();
+                esperarE();
+                break;
+            case 'ERROR3': 
+                alerta3();
+                esperarE();
+                break;
+            case 'ERROR4': 
+                alerta4();
+                esperarE();
+                break;
+            case 'ERROR5': 
+                alerta5();
+                esperarE();
                 break;
             case 'CORRECTO':
                 correctoAud.play();
@@ -238,6 +255,8 @@ const esperarC = ()=>{
 }
 const esperarE = ()=>{
     errorAud.play();
+    clearInterval(idReloj);
+    desactivacionBotones(true);
     setTimeout(function(){
         ejecutaError();
     },2000);

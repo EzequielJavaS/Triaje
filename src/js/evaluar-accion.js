@@ -26,6 +26,8 @@ export const evaluarAcción = (orden, evento, imagen)=>{
         case 2:
             if       (imagen[2] == 'n' && evento == 'btnAbro'){
                 return 'SIGUE SIN<br>RESPIRAR';
+            }else if (imagen[2] == 'n' && evento != 'btnAbro'){
+                return 'ERROR1';
             }else if (imagen[2] =='s' && evento == 'btnAbro'){
                 if( imagen[3] =='e'){
                     return 'AHORA SÍ RESPIRO';
@@ -33,19 +35,28 @@ export const evaluarAcción = (orden, evento, imagen)=>{
                     return 'AHORA SÍ RESPIRO';
                 }else{
                     return 'AHORA SÍ RESPIRO';
-                }       
+                }
+            }else if (imagen[2] =='s' && evento != 'btnAbro'){
+                return 'ERROR1';     
             }else if (imagen[2] =='p' && evento == 'btnPulso'){
                 return 'NO TIENE PULSO';
             }else if (imagen[2] =='u' && evento == 'btnPulso'){
                 return 'SÍ TIENE PULSO';
+            }else if ((imagen[2] =='p'||imagen[2] =='u')  && evento != 'btnPulso'){
+                return 'ERROR2';
             }else if (imagen[2] =='i' && evento == 'compresion'){
                 return 'BUENA COMPRESIÓN';
+            }else if (imagen[2] =='i' && evento != 'compresion'){  
+                return 'ERROR4';
             }else if (imagen[2] =='e' && evento == 'torniquete'){
                 return 'BUEN TORNIQUETE';
+            }else if (imagen[2] =='e' && evento != 'torniquete'){
+                return 'ERROR3';
             }else if (imagen[2] =='r' && evento == 'btnRojo'){
                 return 'CORRECTO';
+            }else if (imagen[2] =='r' && evento != 'btnRojo'){
+                return 'ERROR5';
             }
-            return 'ERROR';
         break;
 
         case 3:

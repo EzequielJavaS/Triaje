@@ -20,7 +20,7 @@ body {
     display: grid;
     grid-template-columns: 65% 35%;
     grid-template-rows: 1fr 83fr 15fr;
-    height: 100vh;
+    height: 85vh;
     gap: 0.2rem;
     grid-template-areas:
         "nav nav"
@@ -422,6 +422,18 @@ body {
 /*Alertas*/
           .textAlert{
             font-size: 1.5vw;
+            text-align: start;
+          }
+          .textAlertCenter{
+            font-size: 1.5vw;
+            text-align: center;
+          }
+
+          .textAlertCenterBold{
+            font-size: 1.5vw;
+            text-align: center;
+            font-weight: bold;
+
           }
 
           .grande{
