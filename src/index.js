@@ -1,7 +1,7 @@
 
 import './styles.css';
 import{evaluarAcción} from './js/evaluar-accion';
-import{alerta, alerta1, alerta2, alerta3, alerta4, alerta5} from './js/sweetalert.js'
+import * as SWAL from './js/sweetalert.js';
 
 let imagenes = ['asusaz.png', 'nnnnzz.png', 'rnslrz.png', 'reerzz.png',
                   'riirzz.png', 'rnselr.png', 'rnsilr.png', 'rrrzzz.png',
@@ -40,7 +40,7 @@ const rango            = document.getElementById('cont'),
 
 // Variables de Reloj Cuenta atrás
 let idReloj;
-const Tiempo = 30; //Variable que marca el tiempo de usuario para triar una víctima
+const Tiempo = 50; //Variable que marca el tiempo de usuario para triar una víctima
 let cont = Tiempo; //Varable cont es para poder actualizar al valor propuesto a la constante Tiempo-
 
 // Visualización inicial del reloj
@@ -59,6 +59,8 @@ let orden,
 let imagen;
 
 let actualizarContadoresError;
+
+
 let actualizarContenedoresAciertos;
 
 //Reloj cuenta atrás
@@ -150,30 +152,60 @@ botonera.addEventListener('click', event => {
         let resultado = evaluarAcción(orden, event.target.id, imagen);
         
         switch (resultado){
-            case 'ERROR': 
-                alerta();
+            case 'ERROR':
+                SWAL.alerta(SWAL.error);
                 esperarE();
                 break;
-            case 'ERROR1': 
-                alerta1();
+            case 'ERROR_RESPIRA': 
+                SWAL.alerta(SWAL.respiraAlert);
                 esperarE();
                 break;
-            case 'ERROR2': 
-                alerta2();
+            case 'ERROR_VERDE': 
+                SWAL.alerta(SWAL.verdeAlert);
                 esperarE();
                 break;
-            case 'ERROR3': 
-                alerta3();
+            case 'ERROR_ABRIR_VIA': 
+                SWAL.alerta(SWAL.abrirViaAlert);
                 esperarE();
                 break;
-            case 'ERROR4': 
-                alerta4();
+            case 'ERROR_PULSO': 
+                SWAL.alerta(SWAL.pulsoAlert);
                 esperarE();
                 break;
-            case 'ERROR5': 
-                alerta5();
+            case 'ERROR_TORNIQUETE': 
+                SWAL.alerta(SWAL.torniqueteAlert);
                 esperarE();
                 break;
+            case 'ERROR_COMPRESION': 
+                SWAL.alerta(SWAL.compresionAlert);
+                esperarE();
+                break;
+            case 'ERROR_ROJO_1': 
+                SWAL.alerta(SWAL.rojo1Alert);
+                esperarE();
+                break;
+            case 'ERROR_NEGRO': 
+                SWAL.alerta(SWAL.negroAlert);  
+                esperarE();
+                break;
+            case 'ERROR_TORNIQUETE_2': 
+                SWAL.alerta(SWAL.torniquete2Alert); 
+                esperarE();
+                break;
+            case 'ERROR_COMPRESION_2': 
+                SWAL.alerta(SWAL.compresion2Alert);
+                esperarE();
+                break;
+            case 'ERROR_POSICION': 
+                SWAL.alerta(SWAL.posicionAlert);
+                esperarE();
+                break;
+            case 'ERROR_ORDENES': 
+                SWAL.alerta(SWAL.ordenesAlert);
+                esperarE();
+                break;
+                
+
             case 'CORRECTO':
                 correctoAud.play();
                 esperarC();
