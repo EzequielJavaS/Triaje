@@ -26,7 +26,6 @@ export const evaluarAcción = (orden, evento, imagen)=>{
                     && evento != 'btnRespira'){ 
                 return 'ERROR_RESPIRA';
             }
-            
         break;
 
         case 2:
@@ -63,22 +62,25 @@ export const evaluarAcción = (orden, evento, imagen)=>{
             }else if (imagen[2] =='r' && evento != 'btnRojo'){
                 return 'ERROR_ROJO_1';
             }
-
         break;
 
         case 3:
             if       (imagen[3] == 'n' && evento == 'btnNegro'){
                 return 'CORRECTO';
-            }else if (imagen[3] =='n'&& evento != 'btnNegro'){
+            }else if (imagen[3] =='n'&& imagen[2] =='n' && evento != 'btnNegro'){
                 return 'ERROR_NEGRO';
             }else if (imagen[3] =='e'&& evento == 'torniquete'){
                 return 'BUEN TORNIQUETE';
             }else if (imagen[3] =='e' && imagen[2] =='s'&& evento != 'torniquete'){
                 return 'ERROR_TORNIQUETE_2';
+            }else if (imagen[3] =='e' && imagen[2] =='p'&& evento != 'torniquete'){
+                return 'ERROR_TORNIQUETE_3';
             }else if (imagen[3] =='i' && evento == 'compresion'){
                 return 'BUENA COMPRESIÓN';
-            }else if (imagen[3] =='i' && evento != 'compresion'){
+            }else if (imagen[3] =='i' && imagen[2] =='p' &&evento != 'compresion'){
                 return 'ERROR_COMPRESION_2';
+            }else if (imagen[3] =='i' && imagen[2] =='s' && evento != 'compresion'){
+                return 'ERROR_COMPRESION_3';
             }else if (imagen[3] =='l' && evento == 'btnPosLate'){
                 return 'BUENA<br>POSICIÓN LATERAL';
             }else if (imagen[3] =='l' && evento != 'btnPosLate'){
@@ -91,26 +93,42 @@ export const evaluarAcción = (orden, evento, imagen)=>{
                 return 'ERROR_ORDENES';
             }else if (imagen[3] =='r' && evento == 'btnRojo'){
                 return 'CORRECTO';
-            }else if (imagen[3] =='r' && evento != 'btnRojo'){
+            }else if (imagen[3] =='r' && imagen[2] =='e' && evento != 'btnRojo'){
                 return 'ERROR_ROJO_1';
-            }
+            }else if (imagen[3] =='r' && imagen[2] =='p' && evento != 'btnRojo'){
+                return 'ERROR_ROJO_2';
+            }else if (imagen[3] =='r' && imagen[2] =='i' && evento != 'btnRojo'){
+                return 'ERROR_ROJO_1';
+        }
         break;
 
         case 4:
             if       (imagen[4] == 'l' && evento == 'btnPosLate'){
                 return 'BUENA<br>POSICIÓN LATERAL';
+            }else if (imagen[4] =='l' && evento != 'btnPosLate'){
+                return 'ERROR_POSICION';
             }else if (imagen[4] =='r' && evento == 'btnRojo'){
                 return 'CORRECTO';
-            }else if ((imagen[4] =='r' && evento == 'btnRojo')||
-                      (imagen[4] =='a' && evento == 'btnAmarillo')){
+            }else if (imagen[4] =='r' && imagen[3] =='l' &&evento != 'btnRojo'){
+                return 'ERROR_ROJO_3';
+            }else if (imagen[4] =='r' && imagen[3] =='e' &&evento != 'btnRojo'){
+                return 'ERROR_ROJO_5';
+            }else if (imagen[4] =='r' && imagen[3] =='n' &&evento != 'btnRojo'){
+                return 'ERROR_ROJO_4';
+            }else if (imagen[4] =='r' && imagen[3] =='i' &&evento != 'btnRojo'){
+                return 'ERROR_ROJO_5';
+            }else if (imagen[4] =='a' && evento == 'btnAmarillo'){
                 return 'CORRECTO';
+            }else if (imagen[4] =='a' && evento != 'btnAmarillo'){
+                return 'ERROR_AMARILLO';
             }
-            return 'ERROR';
         break;
         
         case 5:
             if(imagen[5] == 'r' && evento == 'btnRojo'){
                 return 'CORRECTO';
+            }else if (imagen[5] =='r' && evento != 'btnRojo'){
+                return 'ERROR_ROJO_3';
             }
             return 'ERROR';
         break; 

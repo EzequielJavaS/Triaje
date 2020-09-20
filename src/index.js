@@ -40,7 +40,7 @@ const rango            = document.getElementById('cont'),
 
 // Variables de Reloj Cuenta atrás
 let idReloj;
-const Tiempo = 50; //Variable que marca el tiempo de usuario para triar una víctima
+const Tiempo = 60; //Variable que marca el tiempo de usuario para triar una víctima
 let cont = Tiempo; //Varable cont es para poder actualizar al valor propuesto a la constante Tiempo-
 
 // Visualización inicial del reloj
@@ -184,6 +184,22 @@ botonera.addEventListener('click', event => {
                 SWAL.alerta(SWAL.rojo1Alert);
                 esperarE();
                 break;
+            case 'ERROR_ROJO_2': 
+                SWAL.alerta(SWAL.rojo2Alert);
+                esperarE();
+                break;
+            case 'ERROR_ROJO_3': 
+                SWAL.alerta(SWAL.rojo3Alert);
+                esperarE();
+                break;
+            case 'ERROR_ROJO_4': 
+                SWAL.alerta(SWAL.rojo4Alert);
+                esperarE();
+                break;
+            case 'ERROR_ROJO_5': 
+                SWAL.alerta(SWAL.rojo5Alert);
+                esperarE();
+                break;
             case 'ERROR_NEGRO': 
                 SWAL.alerta(SWAL.negroAlert);  
                 esperarE();
@@ -192,8 +208,16 @@ botonera.addEventListener('click', event => {
                 SWAL.alerta(SWAL.torniquete2Alert); 
                 esperarE();
                 break;
+            case 'ERROR_TORNIQUETE_3': 
+                SWAL.alerta(SWAL.torniquete3Alert); 
+                esperarE();
+                break;
             case 'ERROR_COMPRESION_2': 
                 SWAL.alerta(SWAL.compresion2Alert);
+                esperarE();
+                break;
+            case 'ERROR_COMPRESION_3': 
+                SWAL.alerta(SWAL.compresion3Alert);
                 esperarE();
                 break;
             case 'ERROR_POSICION': 
@@ -202,6 +226,10 @@ botonera.addEventListener('click', event => {
                 break;
             case 'ERROR_ORDENES': 
                 SWAL.alerta(SWAL.ordenesAlert);
+                esperarE();
+                break;
+            case 'ERROR_AMARILLO': 
+                SWAL.alerta(SWAL.amarilloAlert);
                 esperarE();
                 break;
                 

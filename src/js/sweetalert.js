@@ -50,6 +50,35 @@ export const ordenesAlert = '<p class= "grande">Esto es un error</p><br>'+
                     '<p class="textAlert" > Si la víctima presenta pulso o relleno capilar normal, debe valorar si responde a órdenes sencillas.</p> <br>'+
                     '<p class="textAlertCenterBold"> Obedece Órdenes</p>';
 
+export const compresion3Alert = '<p class= "grande">Esto es un error</p><br>'+
+                    '<p class="textAlert" > Si ha abierto vía aérea y existe una hemorragia activa en zona de unión, debe realizar compresión en la zona.</p> <br>'+
+                    '<p class="textAlertCenterBold"> Compresión Directa</p>';
+
+export const torniquete3Alert = '<p class= "grande">Esto es un error</p><br>'+
+                    '<p class="textAlert" >La víctima no presente pulso radial o el relleno capilar es superior a 2 segundos. No es necesario seguir evaluando. Existe una hemorragia activa en extremidad, debe aplicar un torniquete.</p> <br>'+
+                    '<p class="textAlertCenterBold"> Torniquete </p>';
+
+export const rojo2Alert = '<p class= "grande">Esto es un error</p><br>'+
+                    '<p class="textAlert" >La víctima no presente pulso radial o el relleno capilar es superior a 2 segundos. No muestra sangrado activo. No es necesario seguir evaluando. Se debe triar como rojo</p> <br>'+
+                    '<p class="textAlertCenterBold"> ROJO </p>';
+
+export const rojo3Alert = '<p class= "grande">Esto es un error</p><br>'+
+                    '<p class="textAlert" >Ha abierto la vía aérea de la víctima. Se debe triar como rojo</p> <br>'+
+                    '<p class="textAlertCenterBold"> ROJO </p>';
+
+export const rojo4Alert = '<p class= "grande">Esto es un error</p><br>'+
+                    '<p class="textAlert" >La víctima no obedece órdenes. Se debe triar como rojo</p> <br>'+
+                    '<p class="textAlertCenterBold"> ROJO </p>';
+
+export const amarilloAlert = '<p class= "grande">Esto es un error</p><br>'+
+                    '<p class="textAlert" >Si la víctima responde a órdenes debe ser triada como amarillo</p> <br>'+
+                    '<p class="textAlertCenterBold"> AMARILLO </p>';
+
+export const rojo5Alert = '<p class= "grande">Esto es un error</p><br>'+
+                    '<p class="textAlert" >La víctima no presente pulso radial o el relleno capilar es superior a 2 segundos. Se debe triar como rojo</p> <br>'+
+                    '<p class="textAlertCenterBold"> ROJO </p>';
+
+
 
 
 export const alerta = (mensaje) => Swal.fire({
