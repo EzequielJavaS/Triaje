@@ -13,6 +13,7 @@ const rango            = document.getElementById('cont'),
       imgVictima       = document.querySelector('#imgVictima'),
       iniciar          = document.querySelector('.iniciar'),
       salir            = document.querySelector('.salir'),
+      pausar           = document.querySelector('.pausar'),
       btnFl2           = document.querySelectorAll('.fl2'),
       restantesHTML    = document.querySelector('#restantes'),
       correctoHTML     = document.querySelector('#correcto'),
@@ -40,7 +41,7 @@ const rango            = document.getElementById('cont'),
 
 // Variables de Reloj Cuenta atrás
 let idReloj;
-const Tiempo = 60; //Variable que marca el tiempo de usuario para triar una víctima
+const Tiempo = 30; //Variable que marca el tiempo de usuario para triar una víctima
 let cont = Tiempo; //Varable cont es para poder actualizar al valor propuesto a la constante Tiempo-
 
 // Visualización inicial del reloj
@@ -75,7 +76,9 @@ function activaReloj(){
                 element.disabled =true;
             }
             clearInterval(idReloj);
-            esperarE(); // Lanza el Error de triaje.          
+            SWAL.alertaTiempo(SWAL.errortiempo);
+            esperarE(); //Lanza error de triaje
+        
         }
     }, 1000);
 };
@@ -86,6 +89,13 @@ function activaReloj(){
 
 salir.addEventListener('click',() =>{
     location.reload(true);
+});
+
+//Pausar
+
+pausar.addEventListener('click',() =>{
+    clearInterval(idReloj);
+    SWAL.pausarTiempo(SWAL.pausartiempo);
 });
 
 //Botón 'Iniciar Triaje'
@@ -102,6 +112,7 @@ iniciar.addEventListener('click',() =>{
     contCorrectos = 0;
     contErrores = 0;
     check.style.display = "none";
+    pausar.disabled=false;
 
     //Desordenar matriz
     function shuffle(array) {
@@ -315,12 +326,8 @@ const esperarC = ()=>{
 const esperarE = ()=>{
     errorAud.play();
     clearInterval(idReloj);
-    desactivacionBotones(true);
-    setTimeout(function(){
-        ejecutaError();
-    },2000);
 }
-const ejecutaError = ()=>{
+export const ejecutaError = ()=>{
     //Aumneto contador de errord y porcentaje y reinicio contador de orden
     contErrores++;
     porcCorrectos = Math.round ((contCorrectos*100)/(contCorrectos + contErrores));
@@ -396,6 +403,12 @@ function continuaTriaje(){
     imgVictima.src = `./assets/${imagenes[contImagen]}`;
     imagen = imagenes[contImagen];
     contImagen++;
+    desactivacionBotones(false);
+};
+
+export function continuarPausa(){
+    clearInterval(idReloj);
+    activaReloj();
     desactivacionBotones(false);
 };
 

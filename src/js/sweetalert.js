@@ -1,5 +1,7 @@
-export const error = '<p class= "grande">Esto es un error</p>';
+import { ejecutaError, continuarPausa } from "..";
 
+export const errortiempo = '<p class= "grande"> SE AGOTÓ EL TIEMPO</p>';
+export const pausartiempo = '<p class= "grande"> Triaje Pausado</p>';
 
 export const respiraAlert = '<p class= "grande">Esto es un error</p><br>'+
                     '<p class="textAlert">Si la víctima <u>no</u> camina, la primera valoración es saber si respira.</p> <br>'+
@@ -80,7 +82,6 @@ export const rojo5Alert = '<p class= "grande">Esto es un error</p><br>'+
 
 
 
-
 export const alerta = (mensaje) => Swal.fire({
     imageUrl: '../assets/error.png',
     imageWidth: '10%',
@@ -93,8 +94,42 @@ export const alerta = (mensaje) => Swal.fire({
     allowEnterKey: false,
     backdrop: true,
     width: '50%',
-
     customClass:{
         closeButton: '.btn',
-    }
+    },
+    onClose: ejecutaError
+        }).then(function () {
+});
+
+export const alertaTiempo = (mensaje) => Swal.fire({
+    imageUrl: '../assets/error.png',
+    imageWidth: '10%',
+    imageHeight: '10%',
+    background: '#D6D9C8',
+    html: mensaje,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    backdrop: true,
+    width: '50%',
+    timer: 2000,
+    showConfirmButton: false,
+    onClose: ejecutaError
+        }).then(function () {
+});
+
+export const pausarTiempo = (mensaje) => Swal.fire({
+    imageUrl: '../assets/pause.png',
+    imageWidth: '10%',
+    imageHeight: '10%',
+    background: '#D6D9C8',
+    html: mensaje,
+    confirmButtonText: 'Continuar',
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    backdrop: true,
+    width: '50%',
+    onClose: continuarPausa
+        }).then(function () {
 });
