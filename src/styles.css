@@ -256,6 +256,7 @@ body {
     padding: 0.3vw;
     margin-bottom: 0.4rem;
     flex: 6.5;
+    position: relative;
     
 
 }
@@ -282,8 +283,8 @@ body {
 
     .textoEncima{
         position: absolute;
-        top: 65%;
-        left: 83%;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
         color:red;
         font-family: 'Lucida Grande';
@@ -365,6 +366,7 @@ body {
             align-items: center;
             border: 0.15vw solid grey;
             border-radius: 10px 10px 10px 10px;
+            position: relative;
           }
 
 /*Imagen CheckCont*/
@@ -375,11 +377,11 @@ body {
         @supports(object-fit: contain){
             .checkCont{
                 position: absolute;
-                top: 90%;
-                left: 30%;
+                top: 28%;
+                left: 85%;
                 transform: translate(-50%, -50%);
-                height: 6%;
-                width: 6%;
+                height: 50%;
+                width: 50%;
                 object-fit: contain;
             }
         }
@@ -394,7 +396,8 @@ body {
             justify-content: center;
             align-items: center;
             border: 0.15vw solid grey;
-            border-radius: 10px 10px 10px 10px; 
+            border-radius: 10px 10px 10px 10px;
+            position: relative;
           }
 
 /*Imagen ErrorCont*/
@@ -405,11 +408,11 @@ body {
         @supports(object-fit: contain){
             .errorCont{
                 position: absolute;
-                top: 90%;
-                left: 46%;
+                top: 30%;
+                left: 85%;
                 transform: translate(-50%, -50%);
-                height: 6%;
-                width: 6%;
+                height: 50%;
+                width: 50%;
                 object-fit: contain;
             }
         }

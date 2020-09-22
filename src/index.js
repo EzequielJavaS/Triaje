@@ -233,7 +233,6 @@ botonera.addEventListener('click', event => {
                 esperarE();
                 break;
                 
-
             case 'CORRECTO':
                 correctoAud.play();
                 esperarC();
