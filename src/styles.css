@@ -1,8 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     background-color:  #21232A;
-    /* font-family: KumL; */
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Quicksand', sans-serif; 
 }
 
 @font-face{
@@ -18,10 +22,14 @@ body {
 /* Contenedor general crea 2 columnas y 3 filas*/
 .wrapper {
     display: grid;
-    grid-template-columns: 65% 35%;
-    grid-template-rows: 1fr 83fr 15fr;
-    height: 85vh;
+    grid-template-columns: 65vw 35vw; /* 65fr 35fr*/
+    grid-template-rows: 5vh 80vh 15vh; /* 1fr 83fr 15fr*/
+    height: 100vh;
+    width: 100%;
+    max-width: 4060px;
+    margin: 0 auto;
     gap: 0.2rem;
+    overflow: hidden;
     grid-template-areas:
         "nav nav"
         "img eva"
@@ -45,23 +53,24 @@ body {
         font-size: 1.5vw;
         padding: 0;
     }
-    .logoTexto{
-        margin-left: 0;
+    /* .logoTexto{
     }
 
     .logoTexto{
         width: auto;
         height: auto;
-    }
+        margin-left: 0;
 
-    @supports(object-fit: cover){
+    } */
+
+    @supports(object-fit: contain){
         .logoTexto{
           height: auto;
-          width: 100%;
+          width: 80%;
           object-fit:contain;
           object-position: center center;
           border-radius: 10px 10px 10px 10px;
-
+          margin-left: 0;
         }
     }
         /* Logotipo */
@@ -109,16 +118,17 @@ body {
         grid-area: img;
         border: 0.15vw solid grey;
         border-radius: 10px 10px 10px 10px;
-        padding: 0.4vw;
+        /* padding: 0.4vw; */
         margin-bottom: 0rem;
     }
 
         @supports(object-fit: contain){
             #imgVictima{
-              height: 100%;
-              width: 100%;
-              object-fit:contain;
-              object-position:center center;
+              height: auto;
+              width: 80%;
+              object-fit: contain;
+              /* margin: 1vh 1vw; */
+              object-position: center center;
               grid-area: img;
               z-index: -1;
 
@@ -227,6 +237,8 @@ body {
     margin-top: auto;
     flex: 1.9;
     margin-bottom: 0.5rem;
+    overflow: hidden;
+
 
  
 
