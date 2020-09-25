@@ -66,7 +66,7 @@ body {
     @supports(object-fit: contain){
         .logoTexto{
           height: auto;
-          width: 80%;
+          width: 100%;
           object-fit:contain;
           object-position: center center;
           border-radius: 10px 10px 10px 10px;
@@ -114,25 +114,29 @@ body {
     }
         
     .divImgVic{
-        margin: 0 0.3rem auto 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 0.3rem 0 1rem;
         grid-area: img;
         border: 0.15vw solid grey;
         border-radius: 10px 10px 10px 10px;
-        /* padding: 0.4vw; */
-        margin-bottom: 0rem;
     }
 
         @supports(object-fit: contain){
             #imgVictima{
-              height: auto;
-              width: 80%;
-              object-fit: contain;
-              /* margin: 1vh 1vw; */
-              object-position: center center;
-              grid-area: img;
-              z-index: -1;
+                display: flex;
+                position: relative;
+                height: auto;
+                width: 95%;
+                object-fit: contain;
+                object-position: center center;
+                grid-area: img;
+                z-index: -1;
 
             }
+
         } 
 
         /*Imagen Check*/
@@ -262,15 +266,16 @@ body {
 /*Animación*/
 .divAnimacion{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-top: auto;
     border: 0.15vw solid grey;
     border-radius: 10px 10px 10px 10px;
     padding: 0.3vw;
-    margin-bottom: 0.4rem;
-    flex: 6.5;
+    margin-bottom: 0.2rem;
+    flex: 5.9;
     position: relative;
-    
-
 }
 
     .vid{
@@ -281,7 +286,7 @@ body {
     @supports(object-fit: cover){
         .vid{
           height: auto;
-          width: 100%;
+          width: 95%;
           object-fit:contain;
           object-position: center center;
         }
