@@ -53,15 +53,6 @@ body {
         font-size: 1.5vw;
         padding: 0;
     }
-    /* .logoTexto{
-    }
-
-    .logoTexto{
-        width: auto;
-        height: auto;
-        margin-left: 0;
-
-    } */
 
     @supports(object-fit: contain){
         .logoTexto{
@@ -73,25 +64,6 @@ body {
           margin-left: 0;
         }
     }
-        /* Logotipo */
-        /* #logo{
-            height: 9px;
-            width: 20px;
-        }
-  
-        @supports(object-fit: cover){
-            #logo{
-                height: 100%;
-                width: 13%;
-                object-fit: cover;
-                object-position: center center;
-            }
-        } */  
-    
-/* Imagen Víctima */
-    /* .divImgVic{
-        display: grid;
-    }*/
 
     .iniciar, .pausar, .salir{
         padding: 0% 0.3vw 0% 0.3vw;
@@ -155,17 +127,6 @@ body {
                 object-fit: contain;
             }
         }
-
-        /* .textoEncima{
-            position: absolute;
-            top: 65%;
-            left: 83%;
-            transform: translate(-50%, -50%);
-            color:red;
-            font-family: 'Lucida Grande';
-            font-weight: 900;
-            font-size: 2.2vmax;
-        } */
 
         /*Imagen Hemorragia*/
 
@@ -242,10 +203,6 @@ body {
     flex: 1.9;
     margin-bottom: 0.5rem;
     overflow: hidden;
-
-
- 
-
 }
 .btnPosiLat{
     grid-column: span 2;
@@ -291,12 +248,6 @@ body {
           object-position: center center;
         }
     }
-
-    /* .contenedor{
-        position: relative;
-        display: inline-block;
-        text-align: center;
-    } */
 
     .textoEncima{
         position: absolute;
@@ -461,10 +412,6 @@ body {
             font-weight: bold;
           }
 
-          /* h2{
-            font-size: 1.5vw;
-          } */
-
 /*Reloj*/
         #reloj { 
             flex: 1;
@@ -479,72 +426,34 @@ body {
         margin: 0 auto auto 2vw;
 
       }
-
-        /* #noRespira{
-            display: none;
-        }
-
-        #sigueSin{
-            display: none;
-        }
-
-        #b4{
-            margin-bottom: 4pt;
-        }
-
-        #ordenVid{
-            margin-top: 4pt;
-        } */
-
-        /*Botonera Triaje*/
-        /* #botonera { 
-            display: flex;
-            flex-direction:column;
-            background:rgba(0,0,0,0.0);
-            flex-shrink: 1;
-        } */
-/* 
-        .horizontal {
-            display: flex;
-            flex-direction:row;
-            flex-shrink: 1;
-        } */
-
-
         /* Forzar Cambio de color de letra de una clase Bootstrap*/
         .letraBlanca {
             color: white;
         }
 
-        /* Configurar div de Triaje*/
-        /* .colorTriaje{
-            display: flex;
-            flex-direction:column;
-            background-color: rgb(222, 228, 225);
-            flex: 1 1 ;
-        } */
-  
-        /* .border {border-width:5px !important;} */
-  
-        /* .centrado{
-            text-align: center;
-            font-size: 2vw;
-        } */
-        
 
-        /* .controlAltura{flex: 1 1 auto;} */
 
-    /* Fila 2: Resultados y Reloj     */
-    /* #fila2{
+@media screen and (max-width: 360px) and (orientation: portrait){
+    
+    .wrapper {
         display: grid;
-        grid-template-columns: 7fr 3fr;
-    } */
+        grid-template-columns: 100vw;
+        grid-template-rows: 5vh 20vh 65vh 10vh;
+        height: 100vh;
+        width: 100%;
+        max-width: 4060px;
+        margin: 0 auto;
+        gap: 0.2rem;
+        overflow: hidden;
+        grid-template-areas:
+            "nav"
+            "img"
+            "eva"
+            "con";
+    }
+}
 
-    /*Resultados*/
-    /* #resul{
-        display: flex;
-        background: white;
-        align-items: flex-start;
-        flex-shrink: 1;
-    } */
+
+
+
 
