@@ -5,7 +5,7 @@ import * as SWAL from './js/sweetalert.js';
 
 let imagenes = ['asusaz.png', 'nnnnzz.png', 'rnslrz.png', 'reerzz.png',
                   'riirzz.png', 'rnselr.png', 'rnsilr.png', 'rrrzzz.png',
-                  'rsperz.png', 'rspirz.png', 'rsprzz.png', 'rsunrz.png', 'vzzzzz.png'];
+                  'rsperz.jpg', 'rspirz.png', 'rsprzz.png', 'rsunrz.png', 'vzzzzz.jpg'];
 
 //Referencias del HTML
 const rango            = document.getElementById('cont'),
@@ -95,6 +95,10 @@ salir.addEventListener('click',() =>{
 
 pausar.addEventListener('click',() =>{
     clearInterval(idReloj);
+    //Paro y reinicio sonidos.
+    for(let sonido of pasuseSonidos){
+        sonido.pause();
+    };
     SWAL.pausarTiempo(SWAL.pausartiempo);
 });
 
@@ -409,7 +413,12 @@ function continuaTriaje(){
 export function continuarPausa(){
     clearInterval(idReloj);
     activaReloj();
-    desactivacionBotones(false);
+    //Pongo sonido o vídeo pausado en marcha
+    for(let sonido of pasuseSonidos){
+        if (sonido.currentTime !=0) {
+            sonido.play();
+        }
+    };
 };
 
     
