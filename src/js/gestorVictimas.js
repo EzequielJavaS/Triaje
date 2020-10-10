@@ -24,9 +24,9 @@ const tiposDeRojos = variantesRojos.length;
 
 //Porcentajes por color
 const verde = 10;
-const amarillo = 20;
-const negro = 15;
-const rojo = 55;
+const amarillo = 15;
+const negro = 10;
+const rojo = 65;
 
 //Calculos en función de víctimas y porcentajes
 let totalVerdes = Math.round((verde * numVictimas) / 100);
@@ -64,11 +64,7 @@ imagenes = crearArray(totalVerdes, "vzzzzz" );
 imagenes = crearArray(totalAmarillos, "asusaz" );
 imagenes = crearArray(totalNegros, "nnnnzz" );
 
-
-console.log('Imagenes');
-
 lista = lista.sort(function() {return Math.random() - 0.5});
-console.log(lista);
 
 let p = 0;
 let x=0;

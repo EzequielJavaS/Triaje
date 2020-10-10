@@ -5,7 +5,7 @@ import * as SWAL from './js/sweetalert.js';
 import { arrayImagenes } from './js/gestorVictimas';
 import { traducirImagen } from './js/traductorImagenes';
 
-let imagenes = arrayImagenes();
+let imagenes = [];
 
 //Referencias del HTML
 const rango            = document.getElementById('cont'),
@@ -51,6 +51,7 @@ rango.innerHTML ='00:00';
 let orden,
     contImagen,
     imgRestantes,
+    ctrImgSeguridad,
     contCorrectos = 0,
     porcCorrectos = 0,
     contErrores = 0,
@@ -99,6 +100,7 @@ pausar.addEventListener('click',() =>{
 //Botón 'Iniciar Triaje'
 iniciar.addEventListener('click',() =>{
     imagenes = arrayImagenes();
+    console.log(imagenes);
     orden = 1;
     clearInterval(idReloj);
     cont = Tiempo;
@@ -117,6 +119,7 @@ iniciar.addEventListener('click',() =>{
   
     //Coloco primera imágen
     imagen = traducirImagen(imagenes[contImagen]);
+    ctrImgSeguridad = imagen.slice(-1);
     imgVictima.src = `./assets/img/${imagen}.jpg`;
     imagen = imagenes[contImagen];
     contImagen++;
@@ -246,11 +249,12 @@ botonera.addEventListener('click', event => {
             case 'SIGUE SIN<br>RESPIRAR':
                 clickAud.play();
                 noRespira.style.display = "none";
+                respiraVid.style.display= "block";
                 sigueSinRes.style.display = "block";
                 break;
             case 'BUENA<br>POSICIÓN LATERAL':
                 clickAud.play();
-                imgVictima.src = `./assets/img/seg/seguridad${imagen[6]}.jpg`;
+                imgVictima.src = `./assets/img/seg/seguridad${[ctrImgSeguridad]}.jpg`;
                 break;
             case 'BUENA COMPRESIÓN':
                 clickAud.play();
@@ -382,6 +386,7 @@ function continuaTriaje(){
 
     //Muestro víctima siguiente
     imagen = traducirImagen(imagenes[contImagen]);
+    ctrImgSeguridad = imagen.slice(-1);
     imgVictima.src = `./assets/img/${imagen}.jpg`;
     imagen = imagenes[contImagen];
     contImagen++;

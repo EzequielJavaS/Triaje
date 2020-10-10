@@ -255,7 +255,7 @@ body {
         left: 50%;
         transform: translate(-50%, -50%);
         color:red;
-        font-family: 'Lucida Grande';
+        font-family: 'Quicksand';
         font-weight: 900;
         font-size: 2.2vmax;
     }
@@ -327,7 +327,6 @@ body {
             display: flex;
             flex-direction: column;
             color: white;
-            /* background: rgb(72, 112, 72); */
             flex: 1;
             margin: 0.3rem auto 1rem auto;
             justify-content: center;
@@ -386,7 +385,6 @@ body {
         }
     
           h4, h2{
-            /* font-family: AvenirLight; */
             font-size: 1.5vw;
           }
 
