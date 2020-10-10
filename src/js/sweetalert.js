@@ -83,9 +83,10 @@ export const rojo5Alert = '<p class= "grande">Esto es un error</p><br>'+
 
 
 export const alerta = (mensaje) => Swal.fire({
-    imageUrl: '../assets/error.png',
-    imageWidth: '10%',
-    imageHeight: '10%',
+    // imageUrl: '../assets/error.png',
+    // imageWidth: '10%',
+    // imageHeight: '10%',
+    icon: 'error',
     background: '#D6D9C8',
     html: mensaje,
     confirmButtonText: 'Continuar',
@@ -97,14 +98,15 @@ export const alerta = (mensaje) => Swal.fire({
     customClass:{
         closeButton: '.btn',
     },
-    onClose: ejecutaError
+    willClose: ejecutaError
         }).then(function () {
 });
 
 export const alertaTiempo = (mensaje) => Swal.fire({
-    imageUrl: '../assets/error.png',
-    imageWidth: '10%',
-    imageHeight: '10%',
+    // imageUrl: '../assets/error.png',
+    // imageWidth: '10%',
+    // imageHeight: '10%',
+    icon: 'error',
     background: '#D6D9C8',
     html: mensaje,
     allowOutsideClick: false,
@@ -114,14 +116,14 @@ export const alertaTiempo = (mensaje) => Swal.fire({
     width: '50%',
     timer: 2000,
     showConfirmButton: false,
-    onClose: ejecutaError
+    willClose: ejecutaError
         }).then(function () {
 });
 
 export const pausarTiempo = (mensaje) => Swal.fire({
-    imageUrl: '../assets/pause.png',
-    imageWidth: '10%',
-    imageHeight: '10%',
+    // imageUrl: '../assets/pause.png',
+    // imageWidth: '10%',
+    // imageHeight: '10%',
     background: '#D6D9C8',
     html: mensaje,
     confirmButtonText: 'Continuar',
@@ -130,6 +132,6 @@ export const pausarTiempo = (mensaje) => Swal.fire({
     allowEnterKey: false,
     backdrop: true,
     width: '50%',
-    onClose: continuarPausa
+    willClose: continuarPausa
         }).then(function () {
 });
