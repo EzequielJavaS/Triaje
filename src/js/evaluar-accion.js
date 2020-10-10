@@ -1,7 +1,6 @@
 import '../css/componentes.css'
 
 
-
 // Evalua orden de evaluarAcción, evento generado e imagen para ver acierto o error
 export const evaluarAcción = (orden, evento, imagen)=>{
 

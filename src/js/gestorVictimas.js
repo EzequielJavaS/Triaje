@@ -1,6 +1,7 @@
-import "./styles.css";
 
-//Array de imágenes
+export let arrayImagenes = ()=>{
+
+    //Array de imágenes
 let imagenes = [];
 let variantesRojos = [
   "rnslrz",
@@ -18,9 +19,7 @@ let lista = [1,2,3,4,5,6,7,8,9];
 
 
 //Número total de víctimas a tratar
-const numVictimas = 30
-0;
-;
+const numVictimas = 30;
 const tiposDeRojos = variantesRojos.length;
 
 //Porcentajes por color
@@ -107,16 +106,12 @@ function shuffle(array) {
   return array;
 }
 
-console.log(
-  "total por tipo " + totalVerdes,
-  totalAmarillos,
-  totalNegros,
-  totalRojos
-);
-console.log("Total Calculado " + totalcalculado);
-console.log(
-  "Total Ajustado ",
-  totalVerdes + totalAmarillos + totalNegros + totalRojos
-);
-console.log("Tamaño array", imagenes.length);
-console.log(imagenes);
+return imagenes;
+
+}
+
+
+
+
+
+

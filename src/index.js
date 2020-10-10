@@ -2,10 +2,10 @@
 import './styles.css';
 import{evaluarAcción} from './js/evaluar-accion';
 import * as SWAL from './js/sweetalert.js';
+import { arrayImagenes } from './js/gestorVictimas';
+import { traducirImagen } from './js/traductorImagenes';
 
-let imagenes = ['asusaz.png', 'nnnnzz.png', 'rnslrz.png', 'reerzz.png',
-                  'riirzz.png', 'rnselr.png', 'rnsilr.png', 'rrrzzz.png',
-                  'rsperz.jpg', 'rspirz.png', 'rsprzz.png', 'rsunrz.png', 'vzzzzz.jpg'];
+let imagenes = arrayImagenes();
 
 //Referencias del HTML
 const rango            = document.getElementById('cont'),
@@ -59,11 +59,6 @@ let orden,
 //Contiene imagen
 let imagen;
 
-let actualizarContadoresError;
-
-
-let actualizarContenedoresAciertos;
-
 //Reloj cuenta atrás
 function activaReloj(){
     idReloj =setInterval(function(){
@@ -78,7 +73,6 @@ function activaReloj(){
             clearInterval(idReloj);
             SWAL.alertaTiempo(SWAL.errortiempo);
             esperarE(); //Lanza error de triaje
-        
         }
     }, 1000);
 };
@@ -104,7 +98,7 @@ pausar.addEventListener('click',() =>{
 
 //Botón 'Iniciar Triaje'
 iniciar.addEventListener('click',() =>{
-    imagenes = shuffle(imagenes);
+    imagenes = arrayImagenes();
     orden = 1;
     clearInterval(idReloj);
     cont = Tiempo;
@@ -118,29 +112,12 @@ iniciar.addEventListener('click',() =>{
     check.style.display = "none";
     pausar.disabled=false;
 
-    //Desordenar matriz
-    function shuffle(array) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
-      
-        // Mientras queden elementos a mezclar...
-        while (0 !== currentIndex) {
-      
-          // Seleccionar un elemento sin mezclar...
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex -= 1;
-      
-          // E intercambiarlo con el elemento actual
-          temporaryValue = array[currentIndex];
-          array[currentIndex] = array[randomIndex];
-          array[randomIndex] = temporaryValue;
-        }
-        return array;
-    }
     //Activar botones
     desactivacionBotones(false);
   
     //Coloco primera imágen
-    imgVictima.src = `./assets/${imagenes[contImagen]}`;
+    imagen = traducirImagen(imagenes[contImagen]);
+    imgVictima.src = `./assets/img/${imagen}.jpg`;
     imagen = imagenes[contImagen];
     contImagen++;
     //Pongo en marcha reloj
@@ -273,7 +250,7 @@ botonera.addEventListener('click', event => {
                 break;
             case 'BUENA<br>POSICIÓN LATERAL':
                 clickAud.play();
-                imgVictima.src = "./assets/pseguri.png";
+                imgVictima.src = `./assets/img/seg/seguridad${imagen[6]}.jpg`;
                 break;
             case 'BUENA COMPRESIÓN':
                 clickAud.play();
@@ -404,7 +381,8 @@ function continuaTriaje(){
     activaReloj();
 
     //Muestro víctima siguiente
-    imgVictima.src = `./assets/${imagenes[contImagen]}`;
+    imagen = traducirImagen(imagenes[contImagen]);
+    imgVictima.src = `./assets/img/${imagen}.jpg`;
     imagen = imagenes[contImagen];
     contImagen++;
     desactivacionBotones(false);
