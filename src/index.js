@@ -30,7 +30,6 @@ const rango            = document.getElementById('cont'),
       noOrdenVid       = document.querySelector('#noOrdenVid'),
       pasuseSonidos    = document.querySelectorAll('video'),
       noRespira        = document.querySelector('#noRespira'),
-      sigueSinRes      = document.querySelector('#sigueSin'),
       torni            = document.querySelector('.torni'),
       presi            = document.querySelector('.presi'),
       check            = document.querySelector('#check'),
@@ -100,7 +99,7 @@ pausar.addEventListener('click',() =>{
 //Botón 'Iniciar Triaje'
 iniciar.addEventListener('click',() =>{
     imagenes = arrayImagenes();
-    console.log(imagenes);
+    console.log(imagenes);0
     orden = 1;
     clearInterval(idReloj);
     cont = Tiempo;
@@ -243,14 +242,14 @@ botonera.addEventListener('click', event => {
             case 'NO RESPIRA':
                 clickAud.play();
                 logoTexto.style.display = "none";
+                noRespira.innerHTML='¡¡NO RESPIRA!!';
                 respiraVid.style.display= "block";
                 noRespira.style.display = "block";
                 break;
             case 'SIGUE SIN<br>RESPIRAR':
                 clickAud.play();
-                noRespira.style.display = "none";
-                respiraVid.style.display= "block";
-                sigueSinRes.style.display = "block";
+                logoTexto.style.display = "none";
+                noRespira.innerHTML='¡¡SIGUE SIN RESPIRAR!!';
                 break;
             case 'BUENA<br>POSICIÓN LATERAL':
                 clickAud.play();
@@ -350,7 +349,6 @@ function desactivacionBotones(opcion){
     pulsoVid.style.display = "none";
     noPulso.style.display = "none";
     noRespira.style.display = "none";
-    sigueSinRes.style.display = "none";
     torni.style.display = "none";
     presi.style.display = "none";
     respiraVid.style.display="none";

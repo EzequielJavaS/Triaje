@@ -83,9 +83,6 @@ export const rojo5Alert = '<p class= "grande">Esto es un error</p><br>'+
 
 
 export const alerta = (mensaje) => Swal.fire({
-    // imageUrl: '../assets/error.png',
-    // imageWidth: '10%',
-    // imageHeight: '10%',
     icon: 'error',
     background: '#D6D9C8',
     html: mensaje,
@@ -103,9 +100,6 @@ export const alerta = (mensaje) => Swal.fire({
 });
 
 export const alertaTiempo = (mensaje) => Swal.fire({
-    // imageUrl: '../assets/error.png',
-    // imageWidth: '10%',
-    // imageHeight: '10%',
     icon: 'error',
     background: '#D6D9C8',
     html: mensaje,
@@ -121,9 +115,6 @@ export const alertaTiempo = (mensaje) => Swal.fire({
 });
 
 export const pausarTiempo = (mensaje) => Swal.fire({
-    // imageUrl: '../assets/pause.png',
-    // imageWidth: '10%',
-    // imageHeight: '10%',
     background: '#D6D9C8',
     html: mensaje,
     confirmButtonText: 'Continuar',
