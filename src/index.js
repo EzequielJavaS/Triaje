@@ -99,7 +99,6 @@ pausar.addEventListener('click',() =>{
 //Botón 'Iniciar Triaje'
 iniciar.addEventListener('click',() =>{
     imagenes = arrayImagenes();
-    console.log(imagenes);0
     orden = 1;
     clearInterval(idReloj);
     cont = Tiempo;
