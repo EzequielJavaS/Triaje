@@ -410,6 +410,12 @@ body {
             font-weight: bold;
           }
 
+          .grande2{
+            font-size:1,5vw;
+            font-weight: bold;
+            color: green;
+          }
+
 /*Reloj*/
         #reloj { 
             flex: 1;

@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
+    <script type="text/javascript">
+        var host = "www.triajestartduizex.com";
+        if ((host == window.location.host) && (window.location.protocol != "https:"))window.location.protocol = "https";
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-    
     <title>Triaje Start Disaster Role</title>
 </head>
 <body>
@@ -17,12 +21,10 @@
 
 <!-- Cabecera         -->
         <nav class="nav">
-            <!-- <img class="logoTexto" src="./assets/logo.jpg" alt="Disaster Rol Logo"> -->
             <p class="logoProvisional">Triaje Start</p>
             <button type="button" class="pausar fl2 my-2 btn" disabled = "disabled">Pausar</button>
             <button type="button" class="iniciar m-2 btn">Iniciar Triaje</button>
-            <button type="button" class="salir  my-2 btn mr-3 btn">Salir</button>
-
+            <button type="button" class="salir  my-2 btn mr-3 btn">Finalizar</button>
         </nav>
 
 <!-- Imagen Víctima -->

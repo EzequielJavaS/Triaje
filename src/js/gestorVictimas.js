@@ -20,10 +20,11 @@ export let arrayImagenes = ()=>{
 
 
   //Número total de víctimas a tratar
-  const numVictimas = 30;
+  const numVictimas = 45;
   const tiposDeRojos = variantesRojos.length;
 
   //Porcentajes por color
+
   const verde = 10;
   const amarillo = 15;
   const negro = 10;

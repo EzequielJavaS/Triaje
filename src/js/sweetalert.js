@@ -1,4 +1,5 @@
-import { ejecutaError, continuarPausa } from "..";
+import { ejecutaError, continuarPausa, iniciarTriaje } from "..";
+import { codigos } from "./componentes";
 
 export const errortiempo = '<p class= "grande"> SE AGOTÓ EL TIEMPO</p>';
 export const pausartiempo = '<p class= "grande"> Triaje Pausado</p>';
@@ -80,6 +81,22 @@ export const rojo5Alert = '<p class= "grande">Esto es un error</p><br>'+
                     '<p class="textAlert" >La víctima no presente pulso radial o el relleno capilar es superior a 2 segundos. Se debe triar como rojo</p> <br>'+
                     '<p class="textAlertCenterBold"> ROJO </p>';
 
+export const finalMenos80 = '<p class= "grande">Tus aciertos no llegan al 80% </p><br>'+
+                    '<p class="textAlert" >Aun no has adquirido el manejo adecuado del Triaje Start</p> <br>'+
+                    '<p class="textAlertCenterBold"> ¿Quieres seguir entrenando?</p>';
+
+export const finalMas80 = '<p class= "grande">Tus aciertos han superado el 80% </p><br>'+
+                    '<p class="textAlert" >Has adquirido el manejo adecuado del Triaje Start</p> <br>'+
+                    '<p class="textAlertCenterBold"> ¿Quieres seguir entrenando?</p>';
+
+const menPass = '<p class="grande" >Introduce código habilitado para usar la aplicación</p> <br>'+
+                '<p class="textAlert">Si no dispones de un código habilitado puedes contactar con <a href="mailto:info@triajestartduizex.com">info@triajestartduizex.com</a> para poder hacer uso de la aplicación.</p>';
+
+const bienVenido = '<p class="grande" >¡¡Bienvenid@!!</p> <br>'+
+                '<p class="textAlert">Pulsa el botón <span class="grande2"> Iniciar Triaje </span>  cuando quieras comenzar el ejercicio.</p>';
+
+const noHabilitado =  '<p class="textAlertCenter" >Este código no está habilitado</p>';                
+
 
 
 export const alerta = (mensaje) => Swal.fire({
@@ -96,8 +113,8 @@ export const alerta = (mensaje) => Swal.fire({
         closeButton: '.btn',
     },
     willClose: ejecutaError
-        }).then(function () {
 });
+
 
 export const alertaTiempo = (mensaje) => Swal.fire({
     icon: 'error',
@@ -111,8 +128,8 @@ export const alertaTiempo = (mensaje) => Swal.fire({
     timer: 2000,
     showConfirmButton: false,
     willClose: ejecutaError
-        }).then(function () {
 });
+
 
 export const pausarTiempo = (mensaje) => Swal.fire({
     background: '#D6D9C8',
@@ -124,5 +141,60 @@ export const pausarTiempo = (mensaje) => Swal.fire({
     backdrop: true,
     width: '50%',
     willClose: continuarPausa
-        }).then(function () {
 });
+
+
+export const menos80 = (mensaje) => Swal.fire({
+    background: '#D6D9C8',
+    html: mensaje,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    backdrop: true,
+    width: '50%',
+    showCancelButton: true,
+    confirmButtonText:'¡ ¡ ¡ Venga ! ! !',
+    cancelButtonText:'Mejor más tarde'
+  }).then((result) => {
+    (result.isConfirmed) && iniciarTriaje();
+  });
+
+export const getPassword = () =>{(async () => {
+
+    const { value: password } = await Swal.fire({
+        html: menPass,
+        input: 'text',
+        width: '40%',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        backdrop: true,  
+        inputPlaceholder: 'Introduce tu código',
+        inputAttributes: {
+            maxlength: 10,
+            autocapitalize: 'off',
+            autocorrect: 'off'
+        }
+    })
+        if (password) {
+            if (  codigos.includes(password) ){
+                Swal.fire({
+                    html: bienVenido
+                }); 
+            }else{
+                Swal.fire({
+                    title: `${password}`,
+                    html: noHabilitado ,
+                    width:'30%',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    allowEnterKey: true,
+                    backdrop: true,
+                    willClose: getPassword
+                });
+            }    
+        }else{
+            getPassword();
+        }
+    
+    })()}

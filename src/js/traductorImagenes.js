@@ -20,15 +20,10 @@ export let traducirImagen = (imagen)=>{
           imagen='caminando'+imagen[6];
           break;
           
-        //El grupo 1 es de bebe que no tiene torniquete. hay que darlo a otro avatar.
         case 'reerzz':
-          imagen = (imagen[6]==1) ? 'torniquete'+'2' : 'torniquete'+imagen[6];
-          break;
         case 'rnselr':
-          imagen = (imagen[6]==1) ? 'torniquete'+'3' : 'torniquete'+imagen[6];
-            break;
         case 'rsperz':
-          imagen = (imagen[6]==1) ? 'torniquete'+'4' : 'torniquete'+imagen[6];
+          imagen ='torniquete'+imagen[6];
           break;
       
         case 'riirzz':

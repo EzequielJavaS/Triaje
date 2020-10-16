@@ -5,6 +5,7 @@ import * as SWAL from './js/sweetalert.js';
 import { arrayImagenes } from './js/gestorVictimas';
 import { traducirImagen } from './js/traductorImagenes';
 
+
 let imagenes = [];
 
 //Referencias del HTML
@@ -34,9 +35,6 @@ const rango            = document.getElementById('cont'),
       presi            = document.querySelector('.presi'),
       check            = document.querySelector('#check'),
       logoTexto        = document.querySelector('.logoTexto');
-
-//Invisibilizo algunas imágenes
-      noPulso.style.display = "none";
 
 // Variables de Reloj Cuenta atrás
 let idReloj;
@@ -79,10 +77,22 @@ function activaReloj(){
 
 // EVENTOS
 
-//Botón Salir
+//CONTROL DE PASSWORD
+window.addEventListener('load', 
+    function() { 
+        SWAL.getPassword();;
+    }, false);
 
+//Botón Finalizar
 salir.addEventListener('click',() =>{
-    location.reload(true);
+    clearInterval(idReloj);
+    //Paro y reinicio sonidos.
+    for(let sonido of pasuseSonidos){
+        sonido.pause();
+        sonido.currentTime = 0;
+    };
+    finTriaje(true);
+    //location.reload(true);
 });
 
 //Pausar
@@ -97,7 +107,9 @@ pausar.addEventListener('click',() =>{
 });
 
 //Botón 'Iniciar Triaje'
-iniciar.addEventListener('click',() =>{
+iniciar.addEventListener('click',() =>iniciarTriaje());
+
+export const iniciarTriaje = ()=>{
     imagenes = arrayImagenes();
     orden = 1;
     clearInterval(idReloj);
@@ -123,8 +135,7 @@ iniciar.addEventListener('click',() =>{
     contImagen++;
     //Pongo en marcha reloj
     activaReloj();
-});
-
+}
 
 //Aplico en Listaner al alemento padre de los botones y capturo el event
 //A través del event puedo verificar si es la clase de botón que necesito
@@ -363,12 +374,18 @@ function desactivacionBotones(opcion){
     };
 };
 
-function finTriaje(){
-    clearInterval(idReloj);
-    imgVictima.src = './assets/imgFinal.png';
+function finTriaje(btnFianlizar=false){
+    clearInterval();
+    imgVictima.src = './assets/img/imginicio.jpg/';
     restantesHTML.innerHTML = 0;
     //Desactivar botones
     desactivacionBotones(true);
+    //Cuadro información final
+    if(!btnFianlizar){
+        let mensajeFinal = porcCorrectos>=80 ?
+            SWAL.menos80(SWAL.finalMas80):
+            SWAL.menos80(SWAL.finalMenos80);
+    }
 };
 
 function continuaTriaje(){
@@ -400,6 +417,7 @@ export function continuarPausa(){
         }
     };
 };
+
 
     
     
