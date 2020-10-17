@@ -92,7 +92,6 @@ salir.addEventListener('click',() =>{
         sonido.currentTime = 0;
     };
     finTriaje(true);
-    //location.reload(true);
 });
 
 //Pausar
