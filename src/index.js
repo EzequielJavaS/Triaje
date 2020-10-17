@@ -376,7 +376,7 @@ function desactivacionBotones(opcion){
 
 function finTriaje(btnFianlizar=false){
     clearInterval();
-    imgVictima.src = './assets/img/imginicio.jpg/';
+    imgVictima.src = './assets/img/imginicio.jpg';
     restantesHTML.innerHTML = 0;
     //Desactivar botones
     desactivacionBotones(true);
