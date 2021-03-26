@@ -28,7 +28,7 @@ export const evaluarAcción = (orden, evento, imagen)=>{
         break;
 
         case 2:
-            if       (imagen[2] == 'n' && evento == 'btnAbro'){
+            if(imagen[2] == 'n' && evento == 'btnAbro'){
                 return 'SIGUE SIN<br>RESPIRAR';
             }else if (imagen[2] == 'n' && evento != 'btnAbro'){
                 return 'ERROR_ABRIR_VIA';
